@@ -23,10 +23,10 @@ const STORY_HEADERS = [
   },
   {
     prop: "_data",
-    title: "Location"
+    title: "URL"
   },
   {
-    prop: "_source",
+    prop: "_stats_recorded",
     title: "Last Update"
   },
   {
@@ -50,7 +50,7 @@ const STORY_HEADERS = [
   }
 ];
 
-const Asn = (props) => {
+const CodeRepo = (props) => {
   useEffect(() => {
     console.log(props.Tabledata);
   }, [])
@@ -58,7 +58,7 @@ const Asn = (props) => {
   return (
     <>
       <center>
-        <h2>ASN Information</h2>
+        <h2>Code Repository</h2>
       </center>
       <DatatableWrapper
         body={props.Tabledata}
@@ -104,4 +104,4 @@ const Asn = (props) => {
   )
 };
 
-export default Asn;
+export default CodeRepo;

@@ -18,11 +18,10 @@ const Layout = () => {
             <h1>ik tech</h1>
             <Nav variant="pills" activeKey="1">
               <NavDropdown title="Data Category" id="nav-dropdown" onSelect={dropdownChange}>
-                <NavDropdown.Item eventKey="1" >ASN Information</NavDropdown.Item>
-                <NavDropdown.Item eventKey="2">Azure Tenant</NavDropdown.Item>
-                <NavDropdown.Item eventKey="3">Geolocation</NavDropdown.Item>
-                <NavDropdown.Item eventKey="4">Code Repository</NavDropdown.Item>
-                <NavDropdown.Item eventKey="5">Code Repository</NavDropdown.Item>
+                <NavDropdown.Item eventKey="1" href="/">ASN Information</NavDropdown.Item>
+                <NavDropdown.Item eventKey="2" href="/azure">Azure Tenant</NavDropdown.Item>
+                <NavDropdown.Item eventKey="3" href="/geolocation">Geolocation</NavDropdown.Item>
+                <NavDropdown.Item eventKey="5" href="/coderepo">Code Repository</NavDropdown.Item>
                 <NavDropdown.Item eventKey="6">DNS Name</NavDropdown.Item>
                 <NavDropdown.Item eventKey="7">Email Address</NavDropdown.Item>
                 <NavDropdown.Item eventKey="8">Finding</NavDropdown.Item>
