@@ -16,7 +16,7 @@ const Layout = () => {
           </Col> */}
           <Col>
             <h1>ik tech</h1>
-            <Nav variant="pills" activeKey="1">
+            <Nav variant="pills" activeKey="1" style={{'marginBottom':'-50px'}}>
               <NavDropdown title="Data Category" id="nav-dropdown" onSelect={dropdownChange} style={{'zIndex':'1007'}}>
                 <NavDropdown.Item eventKey="1" href="/">ASN Information</NavDropdown.Item>
                 <NavDropdown.Item eventKey="2" href="/azure">Azure Tenant</NavDropdown.Item>
