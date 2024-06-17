@@ -1,10 +1,12 @@
 import { Outlet, Link } from "react-router-dom";
-
-import Sidebar from "../components/Sidebar";
-import Navbar from "../components/Navbar";
-import { Col, Container, Row } from "react-bootstrap";
+import { Col, Row, Container, Nav, Card, Image, Button, Table, Dropdown, ProgressBar, Pagination, ButtonGroup } from '@themesberg/react-bootstrap';
+import NavDropdown from 'react-bootstrap/NavDropdown';
 
 const Layout = () => {
+  const dropdownChange = (parm) => {
+    console.log(parm);
+  }
+
   return (
     <>
       <Container fluid>
@@ -13,30 +15,29 @@ const Layout = () => {
             <Sidebar />
           </Col> */}
           <Col>
-            <h1>Sheetdata</h1>
+            <h1>ik tech</h1>
+            <Nav variant="pills" activeKey="1">
+              <NavDropdown title="Data Category" id="nav-dropdown" onSelect={dropdownChange}>
+                <NavDropdown.Item eventKey="1" href="/">ASN Information</NavDropdown.Item>
+                <NavDropdown.Item eventKey="2" href="/azure">Azure Tenant</NavDropdown.Item>
+                <NavDropdown.Item eventKey="3" href="/geolocation">Geolocation</NavDropdown.Item>
+                <NavDropdown.Item eventKey="5" href="/coderepo">Code Repository</NavDropdown.Item>
+                <NavDropdown.Item eventKey="6">DNS Name</NavDropdown.Item>
+                <NavDropdown.Item eventKey="7">Email Address</NavDropdown.Item>
+                <NavDropdown.Item eventKey="8">Finding</NavDropdown.Item>
+                <NavDropdown.Item eventKey="9">Open TCP Port</NavDropdown.Item>
+                <NavDropdown.Item eventKey="10">Organization Indication</NavDropdown.Item>
+                <NavDropdown.Item eventKey="11">Scanning Information</NavDropdown.Item>
+                <NavDropdown.Item eventKey="12">Social Profiles</NavDropdown.Item>
+                <NavDropdown.Item eventKey="13">Technology</NavDropdown.Item>
+                <NavDropdown.Item eventKey="14">Web Application Firewall (WAF)</NavDropdown.Item>
+                <NavDropdown.Item eventKey="15">General URL</NavDropdown.Item>
+              </NavDropdown>
+            </Nav>
             <Outlet />
           </Col>
         </Row>
-
       </Container>
-
-      {/* 
-      <nav>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/blogs">Blogs</Link>
-          </li>
-          <li>
-            <Link to="/contact">Contact</Link>
-          </li>
-        </ul>
-      </nav> */}
-
-
-
     </>
   )
 };
