@@ -44,7 +44,7 @@ const STORY_HEADERS = [
       //   alert(`${row.username}'s score is ${row.score}`);
       // }}
       >
-        Click me
+        Detail
       </Button>
     )
   }

@@ -2,7 +2,7 @@ import axios from "axios";
 
 var data;
 var filterData = {};
-console.log("env:", process.env.REACT_APP_ACCESS_TOKEN)
+// console.log("env:", process.env.REACT_APP_ACCESS_TOKEN)
 const axiosConfig = {
     headers: {
         'Authorization': process.env.REACT_APP_ACCESS_TOKEN
@@ -20,7 +20,7 @@ await axios.get('https://sheets.googleapis.com/v4/spreadsheets/18e6tF5alQG5_ApSk
         });
 
 const changeOBJ = (ary) => {
-    let resData=[];
+    let resData = [];
     for (let i = 1; i < ary.length; i++) {
         let obj = {}
         for (let j = 0; j < ary[i].length; j++) {
@@ -35,6 +35,8 @@ let ASN = data.filter(item => (item[14] == "ASN")); ASN.unshift(data[0]); filter
 let Azure = data.filter(item => (item[14] == "AZURE_TENANT")); Azure.unshift(data[0]); filterData.Azure = changeOBJ(Azure);
 let GEOLOCATION = data.filter(item => (item[14] == "GEOLOCATION")); GEOLOCATION.unshift(data[0]); filterData.GEOLOCATION = changeOBJ(GEOLOCATION);
 let CodeRepo = data.filter(item => (item[14] == "CODE_REPOSITORY")); CodeRepo.unshift(data[0]); filterData.CodeRepo = changeOBJ(CodeRepo);
-    console.log(changeOBJ(CodeRepo));
+let DNS = data.filter(item => (item[14] == "DNS_NAME")); DNS.unshift(data[0]); filterData.DNS = changeOBJ(DNS);
+let EmailAddress = data.filter(item => (item[14] == "EMAIL_ADDRESS")); EmailAddress.unshift(data[0]); filterData.EmailAddress = changeOBJ(EmailAddress);
+
 
 export default filterData

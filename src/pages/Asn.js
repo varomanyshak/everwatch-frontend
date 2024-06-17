@@ -44,7 +44,7 @@ const STORY_HEADERS = [
       //   alert(`${row.username}'s score is ${row.score}`);
       // }}
       >
-        Click me
+        Detail
       </Button>
     )
   }
@@ -52,7 +52,6 @@ const STORY_HEADERS = [
 
 const Asn = (props) => {
   useEffect(() => {
-    console.log(props.Tabledata);
   }, [])
 
   return (
