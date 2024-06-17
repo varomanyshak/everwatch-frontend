@@ -19,7 +19,6 @@ await axios.get('https://sheets.googleapis.com/v4/spreadsheets/18e6tF5alQG5_ApSk
             console.log("Axios Error: ", err);
         });
 
-
 const changeOBJ = (ary) => {
     let resData=[];
     for (let i = 1; i < ary.length; i++) {
@@ -37,6 +36,5 @@ let Azure = data.filter(item => (item[14] == "AZURE_TENANT")); Azure.unshift(dat
 let GEOLOCATION = data.filter(item => (item[14] == "GEOLOCATION")); GEOLOCATION.unshift(data[0]); filterData.GEOLOCATION = changeOBJ(GEOLOCATION);
 let CodeRepo = data.filter(item => (item[14] == "CODE_REPOSITORY")); CodeRepo.unshift(data[0]); filterData.CodeRepo = changeOBJ(CodeRepo);
     console.log(changeOBJ(CodeRepo));
-
 
 export default filterData
