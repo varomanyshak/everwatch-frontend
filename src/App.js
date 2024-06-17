@@ -15,6 +15,7 @@ import filterData from './sheet.js'
 import "./scss/volt.scss";
 // import "react-datetime/css/react-datetime.css";
 import "leaflet/dist/leaflet.css";
+import "./App.css"
 function App() {
   const Tabledata = filterData;
   useEffect(() => {
