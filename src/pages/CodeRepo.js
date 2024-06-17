@@ -1,10 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import ReactDOM from 'react-dom';
-import { HashRouter, BrowserRouter, Routes, Route } from "react-router-dom";
 import { Col, Row, Nav, Card, Image, Button, Table, Dropdown, ProgressBar, ButtonGroup } from '@themesberg/react-bootstrap';
-import NavDropdown from 'react-bootstrap/NavDropdown';
-import "bootstrap/dist/css/bootstrap.css";
-// import { Button, Col, Row, Table } from "react-bootstrap";
 import {
   DatatableWrapper,
   Filter,
@@ -31,7 +26,7 @@ const STORY_HEADERS = [
   },
   {
     prop: "timestamp",
-    title: "Score",
+    title: "Time",
     isSortable: true
   },
   {
@@ -40,9 +35,6 @@ const STORY_HEADERS = [
       <Button
         variant="outline-primary"
         size="sm"
-      // onClick={() => {
-      //   alert(`${row.username}'s score is ${row.score}`);
-      // }}
       >
         Detail
       </Button>
@@ -100,6 +92,13 @@ const CodeRepo = (props) => {
           <TableBody />
         </Table>
       </DatatableWrapper>
+      {
+        props.Tabledata.length == 0 ? (
+          <center>
+            <h3>Token expired</h3>
+          </center>
+        ) : ('')
+      }
     </>
   )
 };

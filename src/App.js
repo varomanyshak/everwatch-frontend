@@ -9,13 +9,13 @@ import Geolocation from './pages/Geolocation.js'
 import CodeRepo from './pages/CodeRepo.js';
 import DnsName from './pages/DnsName.js'
 import EmailAddress from './pages/EmailAddress.js';
-
 import filterData from './sheet.js'
 
 import "./scss/volt.scss";
-// import "react-datetime/css/react-datetime.css";
+import "bootstrap/dist/css/bootstrap.css";
 import "leaflet/dist/leaflet.css";
 import "./App.css"
+
 function App() {
   const Tabledata = filterData;
   useEffect(() => {
@@ -31,7 +31,6 @@ function App() {
           <Route path='coderepo' element={<CodeRepo Tabledata={Tabledata.CodeRepo} />} />
           <Route path='dns-name' element={<DnsName Tabledata={Tabledata.DNS} />} />
           <Route path='email-address' element={<EmailAddress Tabledata={Tabledata.EmailAddress} />} />
-
         </Route>
       </Routes>
     </BrowserRouter>
