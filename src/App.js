@@ -2,11 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { HashRouter, BrowserRouter, Routes, Route } from "react-router-dom";
 
-
 import Layout from "./pages/Layout.js";
 import Home from "./pages/Home.js";
 import Home1 from "./pages/Home1.js";
 import Home2 from "./pages/Home2.js";
+import data from './sheet.js'
 
 import "./scss/volt.scss";
 import "react-datetime/css/react-datetime.css";
