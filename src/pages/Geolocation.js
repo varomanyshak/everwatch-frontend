@@ -1,17 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import ReactDOM from 'react-dom';
-import { HashRouter, BrowserRouter, Routes, Route } from "react-router-dom";
 import { MapContainer, TileLayer, useMap, Marker, Popup } from 'react-leaflet'
-
 import L from 'leaflet';
 
-const myIcon = L.icon({
+const PIcon = L.icon({
     iconUrl: 'assets/img/map/marker-icon.png',
     iconSize: [25, 41],
     iconAnchor: [12.5, 41],
     popupAnchor: [0, -41],
 });
-
 
 const Azure = (props) => {
     const [locations, setlocations] = useState([]);
@@ -37,7 +33,6 @@ const Azure = (props) => {
             <center>
                 <h1> Geolocation</h1>
             </center>
-
             <div style={{
                 'width': '100%',
                 'height': '700px',
@@ -52,7 +47,7 @@ const Azure = (props) => {
                         locations.map((item, index) => {
                             let position = JSON.parse(item)
                             return (
-                                <Marker position={[position.latitude, position.longitude]} icon={myIcon} key={index}>
+                                <Marker position={[position.latitude, position.longitude]} icon={PIcon} key={index}>
                                     <Popup>
                                         {`Country: ${position.country_name},  City : ${position.city_name},  IP: ${position.ip}`}
                                     </Popup>

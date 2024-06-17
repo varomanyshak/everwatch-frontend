@@ -1,3 +1,6 @@
 .paginationOpts__root {
   min-width: 150px!important;
 }
+.table td, .table th {
+  white-space: wrap;
+}

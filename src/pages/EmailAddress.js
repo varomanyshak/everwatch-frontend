@@ -1,33 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import ReactDOM from 'react-dom';
-import { HashRouter, BrowserRouter, Routes, Route } from "react-router-dom";
-import { Col, Row, Nav, Card, Image, Button, Table, Dropdown, ProgressBar, ButtonGroup , Poupe, Marker} from '@themesberg/react-bootstrap';
-import NavDropdown from 'react-bootstrap/NavDropdown';
-import "bootstrap/dist/css/bootstrap.css";
-// import { Button, Col, Row, Table } from "react-bootstrap";
-import {
-    DatatableWrapper,
-    Filter,
-    Pagination,
-    PaginationOptions,
-    TableBody,
-    TableColumnType,
-    TableHeader
-} from "react-bs-datatable";
-
+import { Col, Row, Nav, Card, Image, Button, Table, Dropdown, ProgressBar, ButtonGroup, Poupe, Marker } from '@themesberg/react-bootstrap';
 import { Container } from 'react-bootstrap';
 
-
-
 const EmailAddress = (props) => {
-
     useEffect(() => {
         console.log(props.Tabledata);
     }, [])
 
-
     return (
-
         <>
             <center>
                 <h1> Email Address</h1>
@@ -50,6 +30,13 @@ const EmailAddress = (props) => {
                     </Card>
                 ))}
             </Container>
+            {
+                props.Tabledata.length == 0 ? (
+                    <center>
+                        <h3>Token expired</h3>
+                    </center>
+                ) : ('')
+            }
         </>
     )
 };
