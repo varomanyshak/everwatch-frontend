@@ -13,7 +13,6 @@ import { Link, NavLink } from 'react-router-dom';
 export default () => {
   return (
     <>
-
       <Nav variant="underline" defaultActiveKey="/home" activeKey={1} className="flex-column" >
         <Nav.Item>
           <Nav.Link href="/home">Active</Nav.Link>
@@ -24,11 +23,9 @@ export default () => {
         <Nav.Item>
           <Nav.Link href="/home2">Active</Nav.Link>
         </Nav.Item>
-
         <Nav.Link eventKey="link-1">Link</Nav.Link>
         <Nav.Link eventKey="link-2">Link</Nav.Link>
       </Nav>
     </>
   )
-
 }

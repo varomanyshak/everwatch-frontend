@@ -1,26 +1,29 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import { HashRouter, BrowserRouter, Routes, Route } from "react-router-dom";
 
+import Asn from "./pages/Asn.js";
 import Layout from "./pages/Layout.js";
-import Home from "./pages/Home.js";
-import Home1 from "./pages/Home1.js";
-import Home2 from "./pages/Home2.js";
-import data from './sheet.js'
+
+import filterData from './sheet.js'
 
 import "./scss/volt.scss";
-import "react-datetime/css/react-datetime.css";
-
-// import 'bootstrap/dist/css/bootstrap.min.css';
+// import "react-datetime/css/react-datetime.css";
 
 function App() {
+  const Tabledata = filterData;
+ 
+  useEffect(() => {
+
+  }, [])
+
+
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route path='/home1' element={<Home1 />} />
-          <Route path='/home2' element={<Home2 />} />
+    <BrowserRouter Tabledata={Tabledata}>
+      <Routes Tabledata={Tabledata}>
+        <Route path="/" element={<Layout Tabledata={Tabledata} />}>
+          <Route index element={<Asn Tabledata={Tabledata.ASN} />} />
+
         </Route>
       </Routes>
     </BrowserRouter>
