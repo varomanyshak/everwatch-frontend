@@ -7,7 +7,8 @@ const axiosConfig = {
         'Authorization': process.env.REACT_APP_ACCESS_TOKEN
     }
 };
-await axios.get('https://sheets.googleapis.com/v4/spreadsheets/19i9zeJTRCK9yrFWfQ7s2F_P2XvImD3mOG0vojRbUVtc/values/sompo_results_sample', axiosConfig)
+
+await axios.get('https://sheets.googleapis.com/v4/spreadsheets/1_GxPa5ZDLRVscL3H0dXysMWRmA95PbOxmfzL2dKeimc/values/sompo_results_sample2', axiosConfig)
     .then(
         (res) => {
             data = res.data.values
@@ -36,6 +37,14 @@ const asnData = (ary) => {
     }
     return ary
 }
+const azureData = (ary)=>{
+    for (let i = 0; i < ary.length; i++) {
+        let str = ary[i]._data;
+        let jsonStr = str.replaceAll("'", '"')
+        ary[i]._data = JSON.parse(jsonStr);
+    }
+    return ary
+}
 
 if (data === undefined) {
     filterData.ASN = []
@@ -44,20 +53,19 @@ if (data === undefined) {
     filterData.CodeRepo = []
     filterData.DNS = []
     filterData.EmailAddress = []
-    
+
 } else {
     let ASN = data.filter(item => (item[14] == "ASN"));
     ASN.unshift(data[0]);
-    
     filterData.ASN = (asnData(changeOBJ(ASN)));
 
     filterTypeStr(asnData(changeOBJ(ASN)), 'scans')
 
-
-
-
     let Azure = data.filter(item => (item[14] == "AZURE_TENANT"));
     Azure.unshift(data[0]); filterData.Azure = changeOBJ(Azure);
+    filterData.Azure = (asnData(changeOBJ(Azure)));
+
+
     let GEOLOCATION = data.filter(item => (item[14] == "GEOLOCATION"))
     GEOLOCATION.unshift(data[0])
     filterData.GEOLOCATION = changeOBJ(GEOLOCATION);

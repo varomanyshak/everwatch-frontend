@@ -1,11 +1,11 @@
 import React from "react";
-import { VerticalTimeline, VerticalTimelineElement }  from 'react-vertical-timeline-component';
+import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
 import 'react-vertical-timeline-component/style.min.css';
 
 const GeneralTimeline = (props) => {
     let totalData1 = Object.values(props.data).flat()
     let totalData = totalData1.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp))
-    console.log("Total Data", totalData )
+    // console.log("Total Data", totalData)
     return (
         <div className="timeline-wrapper-d">
             <style>
@@ -42,7 +42,7 @@ const GeneralTimeline = (props) => {
                     }
                 `}
             </style>
-           <VerticalTimeline>
+            <VerticalTimeline>
                 {
                     totalData.map((item, index) => {
                         return (
@@ -55,13 +55,13 @@ const GeneralTimeline = (props) => {
                                 key={index}
                             >
                                 <p>
-                                {`new ${item._type}`}
+                                    {`new ${item._type}`}
                                 </p>
                             </VerticalTimelineElement>
                         )
-                    })   
+                    })
                 }
-                </VerticalTimeline>
+            </VerticalTimeline>
         </div>
     )
 }

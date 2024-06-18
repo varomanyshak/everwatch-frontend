@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { MapContainer, TileLayer, useMap, Marker, Popup } from 'react-leaflet'
 import L from 'leaflet';
+import { Table } from 'react-bootstrap';
 
 const PIcon = L.icon({
     iconUrl: 'assets/img/map/marker-icon.png',
@@ -18,6 +19,7 @@ const Azure = (props) => {
 
     const getLocations = () => {
         let data = props.Tabledata;
+        console.log(props.Tabledata);
         let tempAry = []
         for (let i = 0; i < data.length; i++) {
             let temp = data[i]._data
@@ -26,6 +28,11 @@ const Azure = (props) => {
             tempAry.push(josnString)
         }
         setlocations(tempAry)
+
+        tempAry.map(item=>{
+            console.log(JSON.parse(item));
+        })
+
     }
 
     return (
@@ -36,7 +43,7 @@ const Azure = (props) => {
             <div style={{
                 'width': '100%',
                 'height': '700px',
-                'boxShadow': '0 0 15px 5px #333',
+                'boxShadow': '0 0 10px 5px #555',
             }}>
                 <MapContainer center={[-23.547121, -46.637186]} zoom={5} scrollWheelZoom={true} style={{ 'height': '100%', 'width': '100%' }}>
                     <TileLayer
