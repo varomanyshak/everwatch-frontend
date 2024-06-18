@@ -2,10 +2,48 @@ import React, { useState, useEffect } from 'react';
 import { Col, Row, Nav, Card, Image, Button, Table, Dropdown, ProgressBar, ButtonGroup } from '@themesberg/react-bootstrap';
 import { Container } from 'react-bootstrap';
 import newScan from '../confgi/common';
-
+import DetailModal from '../components/DetailModal';
 const Azure = (props) => {
+    const [modalShow, setModalShow] = useState(false);
+    const [detailObj, setdetailObj] = useState({
+        confidence: "",
+        id: "",
+        module: "",
+        parsed: "",
+        scan: "",
+        scan_id: "",
+        scans: "",
+        timestamp: "",
+        _BaseEvent__host: "",
+        _BaseEvent__words: "",
+        _data: {
+            domains: [],
+            "tenant-id": "",
+            "tenant-names": []
+        },
+        _dummy: "",
+        _hash: "",
+        _id: "",
+        _internal: "",
+        _module_priority: "",
+        _port: "",
+        _priority: "",
+        _resolved_hosts: "",
+        _scope_distance: "",
+        _source: "",
+        _source_id: "",
+        _stats_recorded: "",
+        _tags: "",
+        _type: ""
+    });
+
+    const listDetail = (list) => {
+        setdetailObj(list)
+        setModalShow(true)
+        console.log(list);
+    }
     useEffect(() => {
-        console.log(props.Tabledata);
+        // console.log(props.Tabledata);
     }, [])
 
     return (
@@ -28,7 +66,7 @@ const Azure = (props) => {
                 'display': 'flex',
                 'flexWrap': 'wrap',
                 'gap': '3px',
-                'marginTop':'10px'
+                'marginTop': '10px'
             }}>
 
                 {props.Tabledata.map((item, index) => (
@@ -38,7 +76,7 @@ const Azure = (props) => {
                             <Card.Text>
                                 {item._id}
                             </Card.Text>
-                            <Button variant="primary">More detail</Button>
+                            <Button variant="primary" onClick={() => listDetail(item)}>More detail</Button>
                         </Card.Body>
                     </Card>
                 ))}
@@ -51,6 +89,12 @@ const Azure = (props) => {
                     </center>
                 ) : ('')
             }
+            <DetailModal
+                show={modalShow}
+                onHide={() => setModalShow(false)}
+                data={detailObj}
+                type="azure"
+            />
         </>
     )
 };

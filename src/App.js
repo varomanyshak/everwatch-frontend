@@ -15,6 +15,7 @@ import "./scss/volt.scss";
 import "bootstrap/dist/css/bootstrap.css";
 import "leaflet/dist/leaflet.css";
 import "./App.css"
+import Sidebar from './components/Sidebar.js';
 
 function App() {
   const Tabledata = filterData;
@@ -22,18 +23,21 @@ function App() {
   }, [])
 
   return (
-    <BrowserRouter Tabledata={Tabledata}>
-      <Routes Tabledata={Tabledata}>
-        <Route path="/" element={<Layout Tabledata={Tabledata} />}>
-          <Route index element={<Asn Tabledata={Tabledata.ASN} />} />
-          <Route path='azure' element={<Azure Tabledata={Tabledata.Azure} />} />
-          <Route path='geolocation' element={<Geolocation Tabledata={Tabledata.GEOLOCATION} />} />
-          <Route path='coderepo' element={<CodeRepo Tabledata={Tabledata.CodeRepo} />} />
-          <Route path='dns-name' element={<DnsName Tabledata={Tabledata.DNS} />} />
-          <Route path='email-address' element={<EmailAddress Tabledata={Tabledata.EmailAddress} />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+    <>
+      <Sidebar />
+      <BrowserRouter Tabledata={Tabledata}>
+        <Routes Tabledata={Tabledata}>
+          <Route path="/" element={<Layout Tabledata={Tabledata} />}>
+            <Route index element={<Asn Tabledata={Tabledata.ASN} />} />
+            <Route path='azure' element={<Azure Tabledata={Tabledata.Azure} />} />
+            <Route path='geolocation' element={<Geolocation Tabledata={Tabledata.GEOLOCATION} />} />
+            <Route path='coderepo' element={<CodeRepo Tabledata={Tabledata.CodeRepo} />} />
+            <Route path='dns-name' element={<DnsName Tabledata={Tabledata.DNS} />} />
+            <Route path='email-address' element={<EmailAddress Tabledata={Tabledata.EmailAddress} />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </>
   );
 }
 
