@@ -1,5 +1,5 @@
 import axios from "axios";
-
+import filterTypeStr from "./confgi/filter";
 var data;
 var filterData = {};
 const axiosConfig = {
@@ -7,7 +7,7 @@ const axiosConfig = {
         'Authorization': process.env.REACT_APP_ACCESS_TOKEN
     }
 };
-await axios.get('https://sheets.googleapis.com/v4/spreadsheets/18e6tF5alQG5_ApSkXxKZA4lja6Zp5EljRkIKrDP-wB0/values/sompo_results_sample', axiosConfig)
+await axios.get('https://sheets.googleapis.com/v4/spreadsheets/19i9zeJTRCK9yrFWfQ7s2F_P2XvImD3mOG0vojRbUVtc/values/sompo_results_sample', axiosConfig)
     .then(
         (res) => {
             data = res.data.values
@@ -44,10 +44,18 @@ if (data === undefined) {
     filterData.CodeRepo = []
     filterData.DNS = []
     filterData.EmailAddress = []
+    
 } else {
     let ASN = data.filter(item => (item[14] == "ASN"));
     ASN.unshift(data[0]);
+    
     filterData.ASN = (asnData(changeOBJ(ASN)));
+
+    filterTypeStr(asnData(changeOBJ(ASN)), 'scans')
+
+
+
+
     let Azure = data.filter(item => (item[14] == "AZURE_TENANT"));
     Azure.unshift(data[0]); filterData.Azure = changeOBJ(Azure);
     let GEOLOCATION = data.filter(item => (item[14] == "GEOLOCATION"))

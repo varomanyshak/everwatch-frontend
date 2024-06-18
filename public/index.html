@@ -1,17 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <title>ik</title>
-  </head>
-  <body>
-    <div id="root"></div>
-  </body>
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <meta name="description" content="Web site created using create-react-app" />
+  <title>ik</title>
+  <style>
+    .loader {
+      animation: spin 1s infinite linear;
+      border: solid 2vmin transparent;
+      border-radius: 50%;
+      border-right-color: #dd2476;
+      border-top-color: #dd2476;
+      box-sizing: border-box;
+      height: 20vmin;
+      left: calc(50% - 10vmin);
+      position: fixed;
+      top: calc(50% - 10vmin);
+      width: 20vmin;
+      z-index: 1;
+
+      &:before {
+        animation: spin 2s infinite linear;
+        border: solid 2vmin transparent;
+        border-radius: 50%;
+        border-right-color: #f880b6;
+        border-top-color: #eb65a1;
+        box-sizing: border-box;
+        content: "";
+        height: 16vmin;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 16vmin;
+      }
+
+      &:after {
+        animation: spin 3s infinite linear;
+        border: solid 2vmin transparent;
+        border-radius: 50%;
+        border-right-color: #ffd7e9;
+        border-top-color: #fabfd8;
+        box-sizing: border-box;
+        content: "";
+        height: 12vmin;
+        left: 2vmin;
+        position: absolute;
+        top: 2vmin;
+        width: 12vmin;
+      }
+    }
+
+    @keyframes spin {
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="root">
+    <div class="loader"></div>
+  </div>
+</body>
+
 </html>
