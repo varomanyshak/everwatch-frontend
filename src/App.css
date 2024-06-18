@@ -3,4 +3,13 @@
 }
 .table td, .table th {
   white-space: wrap;
+
+}
+.Asn-card{
+  transition: 0.3s;
+}
+.Asn-card:hover{
+  cursor: pointer;
+  box-shadow: 0 5px 15px #707070;
+  transform: scale(1.02);
 }

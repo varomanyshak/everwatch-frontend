@@ -1,21 +1,32 @@
 import React, { useState, useEffect } from 'react';
 import { Col, Row, Nav, Card, Image, Button, Table, Dropdown, ProgressBar, ButtonGroup, Poupe, Marker } from '@themesberg/react-bootstrap';
 import { Container } from 'react-bootstrap';
+import newScan from '../confgi/common';
 
 const EmailAddress = (props) => {
-    useEffect(() => {
-        console.log(props.Tabledata);
-    }, [])
 
     return (
         <>
-            <center>
-                <h1> Email Address</h1>
-            </center>
+            <Row>
+                <Col className="d-flex justify-content-end">
+                    <Card style={{ 'marginTop': '-40px' }}>
+                        <Card.Body>
+                            <Card.Title>Total : {props.Tabledata.length}</Card.Title>
+                            <Card.Text>
+                                New : {newScan(props.Tabledata)}
+                            </Card.Text>
+                        </Card.Body>
+                    </Card>
+                </Col>
+                <Col className='d-flex justify-content-center' ><h1>Email Address</h1></Col>
+                <Col></Col>
+            </Row>
+
             <Container style={{
                 'display': 'flex',
                 'flexWrap': 'wrap',
-                'gap': '3px'
+                'gap': '3px',
+                'marginTop':'10px'
             }}>
                 {props.Tabledata.map((item, index) => (
                     <Card style={{ width: '18rem' }} key={index}>

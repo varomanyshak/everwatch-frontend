@@ -2,17 +2,31 @@ import React, { useState, useEffect } from 'react';
 import { Col, Row, Nav, Card, Image, Button, Table, Dropdown, ProgressBar, ButtonGroup } from '@themesberg/react-bootstrap';
 import "bootstrap/dist/css/bootstrap.css";
 import { Container } from 'react-bootstrap';
+import newScan from '../confgi/common';
 
 const DnsName = (props) => {
     return (
         <>
-            <center>
-                <h1> Dns Name </h1>
-            </center>
+            <Row>
+                <Col className="d-flex justify-content-end">
+                    <Card style={{ 'marginTop': '-40px' }}>
+                        <Card.Body>
+                            <Card.Title>Total : {props.Tabledata.length}</Card.Title>
+                            <Card.Text>
+                                New : {newScan(props.Tabledata)}
+                            </Card.Text>
+                        </Card.Body>
+                    </Card>
+                </Col>
+                <Col className='d-flex justify-content-center' ><h1>DNS Name</h1></Col>
+                <Col></Col>
+            </Row>
+
             <Container style={{
                 'display': 'flex',
                 'flexWrap': 'wrap',
-                'gap': '3px'
+                'gap': '3px',
+                'marginTop':'10px'
             }}>
 
                 {props.Tabledata.map((item, index) => (
