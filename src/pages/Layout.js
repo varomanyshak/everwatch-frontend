@@ -1,12 +1,16 @@
 import { Outlet, Link } from "react-router-dom";
 import { Col, Row, Container, Nav, Card, Image, Button, Table, Dropdown, ProgressBar, Pagination, ButtonGroup } from '@themesberg/react-bootstrap';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import GeneralTimeline from "../components/Timeline";
 
-const Layout = () => {
+const Layout = (props) => {
   return (
     <>
       <Container fluid>
         <Row>
+          <Col xl={4} md={4}>
+            <GeneralTimeline data = {props.Tabledata} />
+          </Col>
           <Col>
             <h1>ik tech</h1>
             <Nav variant="pills" activeKey="1" style={{'marginBottom':'-50px'}}>
