@@ -13,14 +13,15 @@ const Layout = (props) => {
           </Col>
           <Col>
             <h1>ik tech</h1>
-            <Nav variant="pills" activeKey="1" style={{'marginBottom':'-50px'}}>
-              <NavDropdown title="Data Category" id="nav-dropdown" style={{'zIndex':'1007'}}>
-                <NavDropdown.Item eventKey="1" href="/">ASN Information</NavDropdown.Item>
-                <NavDropdown.Item eventKey="2" href="/azure">Azure Tenant</NavDropdown.Item>
-                <NavDropdown.Item eventKey="3" href="/geolocation">Geolocation</NavDropdown.Item>
-                <NavDropdown.Item eventKey="4" href="/coderepo">Code Repository</NavDropdown.Item>
-                <NavDropdown.Item eventKey="5" href="/dns-name">DNS Name</NavDropdown.Item>
-                <NavDropdown.Item eventKey="6" href="/email-address">Email Address</NavDropdown.Item>
+            <Nav variant="pills" activeKey="1" style={{ 'marginBottom': '-50px' }}>
+              <NavDropdown title="Data Category" id="nav-dropdown" style={{ 'zIndex': '1007' }}>
+                <NavDropdown.Item eventKey="1"><Link to="/">Azure Tenant</Link></NavDropdown.Item>
+                <NavDropdown.Item eventKey="2"><Link to="/azure">Azure Tenant</Link></NavDropdown.Item>
+                <NavDropdown.Item eventKey="3"><Link to="/geolocation">Geolocation</Link></NavDropdown.Item>
+                <NavDropdown.Item eventKey="4"><Link to="/coderepo">Code Repository</Link></NavDropdown.Item>
+                <NavDropdown.Item eventKey="5"><Link to="/dns-name">DNS Name</Link>DNS Name</NavDropdown.Item>
+                <NavDropdown.Item eventKey="6"><Link to="/email-address">Email Address</Link></NavDropdown.Item>
+
                 <NavDropdown.Item eventKey="7">Finding</NavDropdown.Item>
                 <NavDropdown.Item eventKey="8">Open TCP Port</NavDropdown.Item>
                 <NavDropdown.Item eventKey="10">Organization Indication</NavDropdown.Item>
