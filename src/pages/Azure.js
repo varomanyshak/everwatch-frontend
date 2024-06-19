@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Col, Row, Nav, Card, Image, Button, Table, Dropdown, ProgressBar, ButtonGroup } from '@themesberg/react-bootstrap';
 import { Container } from 'react-bootstrap';
-import newScan from '../confgi/common';
+import { useSelector, useDispatch } from 'react-redux'  
+
+import newScan from '../config/common';
 import DetailModal from '../components/DetailModal';
+
 const Azure = (props) => {
+    const Tabledata = JSON.parse(useSelector((state) => state.counter.value)).Azure
     const [modalShow, setModalShow] = useState(false);
     const [detailObj, setdetailObj] = useState({
         confidence: "",
@@ -52,9 +56,9 @@ const Azure = (props) => {
                 <Col className="d-flex justify-content-end">
                     <Card style={{ 'marginTop': '-40px' }}>
                         <Card.Body>
-                            <Card.Title>Total : {props.Tabledata.length}</Card.Title>
+                            <Card.Title>Total : {Tabledata.length}</Card.Title>
                             <Card.Text>
-                                New : {newScan(props.Tabledata)}
+                                New : {newScan(Tabledata)}
                             </Card.Text>
                         </Card.Body>
                     </Card>
@@ -69,7 +73,7 @@ const Azure = (props) => {
                 'marginTop': '10px'
             }}>
 
-                {props.Tabledata.map((item, index) => (
+                {Tabledata.map((item, index) => (
                     <Card style={{ width: '18rem' }} key={index}>
                         <Card.Body>
                             <Card.Title>{item.timestamp}</Card.Title>
@@ -83,7 +87,7 @@ const Azure = (props) => {
 
             </Container>
             {
-                props.Tabledata.length == 0 ? (
+                Tabledata.length == 0 ? (
                     <center>
                         <h3>Token expired</h3>
                     </center>

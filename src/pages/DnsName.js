@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Col, Row, Nav, Card, Image, Button, Table, Dropdown, ProgressBar, ButtonGroup } from '@themesberg/react-bootstrap';
-import "bootstrap/dist/css/bootstrap.css";
 import { Container } from 'react-bootstrap';
-import newScan from '../confgi/common';
+import newScan from '../config/common';
 
 const DnsName = (props) => {
     return (

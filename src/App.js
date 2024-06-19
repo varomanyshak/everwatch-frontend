@@ -1,6 +1,11 @@
 import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux'
 import ReactDOM from 'react-dom';
 import { HashRouter, BrowserRouter, Routes, Route } from "react-router-dom";
+import { Col, Row, Button, Container, Dropdown, ButtonGroup } from '@themesberg/react-bootstrap';
+
+import { inputData } from './features/counter/counterSlice.js'
+import { dataIncrement } from './features/counter/dataSlice.js';
 
 import Layout from "./pages/Layout.js";
 import Asn from "./pages/Asn.js";
@@ -10,25 +15,26 @@ import CodeRepo from './pages/CodeRepo.js';
 import DnsName from './pages/DnsName.js'
 import EmailAddress from './pages/EmailAddress.js';
 import filterData from './sheet.js'
-
-import "./scss/volt.scss";
-import "bootstrap/dist/css/bootstrap.css";
-import "leaflet/dist/leaflet.css";
-import "./App.css"
+import filterObj from './config/filterObj';
 import Sidebar from './components/Sidebar.js';
 
-function App() {
-  const Tabledata = filterData;
-  useEffect(() => {
-  }, [])
+import "leaflet/dist/leaflet.css";
+import "./scss/volt.scss";
+import "./App.css"
 
+function App() {
+  const dispatch = useDispatch()
+  const Tabledata = filterData;
+  dispatch(inputData(JSON.stringify(Tabledata)))
+  dispatch(dataIncrement(JSON.stringify(filterObj)))
+ 
   return (
     <>
-      <Sidebar />
       <BrowserRouter Tabledata={Tabledata}>
+        <Sidebar />
         <Routes Tabledata={Tabledata}>
           <Route path="/" element={<Layout Tabledata={Tabledata} />}>
-            <Route index element={<Asn Tabledata={Tabledata.ASN} />} />
+            <Route index element={<Asn />} />
             <Route path='azure' element={<Azure Tabledata={Tabledata.Azure} />} />
             <Route path='geolocation' element={<Geolocation Tabledata={Tabledata.GEOLOCATION} />} />
             <Route path='coderepo' element={<CodeRepo Tabledata={Tabledata.CodeRepo} />} />
