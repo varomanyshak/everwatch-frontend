@@ -1,5 +1,10 @@
 import axios from "axios";
-import filterTypeStr from "./confgi/filter";
+import filterTypeStr from "./config/filter";
+import { useSelector, useDispatch } from 'react-redux'
+import { dataIncrement } from './features/counter/dataSlice'
+
+
+
 var data;
 var filterData = {};
 const axiosConfig = {
@@ -7,16 +12,6 @@ const axiosConfig = {
         'Authorization': process.env.REACT_APP_ACCESS_TOKEN
     }
 };
-
-await axios.get('https://sheets.googleapis.com/v4/spreadsheets/1_GxPa5ZDLRVscL3H0dXysMWRmA95PbOxmfzL2dKeimc/values/sompo_results_sample2', axiosConfig)
-    .then(
-        (res) => {
-            data = res.data.values
-        })
-    .catch(
-        (err) => {
-            console.log("Axios Error: ", err);
-        });
 
 const changeOBJ = (ary) => {
     let resData = [];
@@ -29,6 +24,22 @@ const changeOBJ = (ary) => {
     }
     return resData
 }
+
+await axios.get('https://sheets.googleapis.com/v4/spreadsheets/1_GxPa5ZDLRVscL3H0dXysMWRmA95PbOxmfzL2dKeimc/values/sompo_results_sample2', axiosConfig)
+    .then(
+        (res) => {
+            data = res.data.values
+            // const dispatch = useDispatch()
+            // dispatch(dataIncrement(changeOBJ(data)))
+            // console.log('ooooo', changeOBJ(data));
+        })
+    .catch(
+        (err) => {
+            console.log("Axios Error: ", err);
+        });
+
+
+
 const asnData = (ary) => {
     for (let i = 0; i < ary.length; i++) {
         let str = ary[i]._data;
@@ -37,14 +48,13 @@ const asnData = (ary) => {
     }
     return ary
 }
-const azureData = (ary)=>{
-    for (let i = 0; i < ary.length; i++) {
-        let str = ary[i]._data;
-        let jsonStr = str.replaceAll("'", '"')
-        ary[i]._data = JSON.parse(jsonStr);
-    }
-    return ary
-}
+
+
+
+
+
+
+
 
 if (data === undefined) {
     filterData.ASN = []

@@ -1,5 +1,6 @@
 #root {
   display: flex;
+  height: 100vh;
 }
 
 .paginationOpts__root {
@@ -19,4 +20,8 @@
   cursor: pointer;
   box-shadow: 0 5px 15px #707070;
   transform: scale(1.02);
+}
+
+.hQSxZz {
+  margin: 5px 15px!important;
 }

@@ -14,3 +14,4 @@ const filterTypeStr = (data, type) => {
 }
 
 export default filterTypeStr;
+

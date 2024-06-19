@@ -1,5 +1,7 @@
-
 import React, { useState } from "react";
+import { Outlet, Link, NavLink } from "react-router-dom";
+import { useSelector, useDispatch } from 'react-redux'
+
 import {
   CDBSidebar,
   CDBSidebarHeader,
@@ -9,28 +11,36 @@ import {
   CDBSidebarSubMenu,
   CDBSidebarFooter,
 } from 'cdbreact';
+import { inputTitle } from "../features/counter/titleSlice";
 
 export default () => {
+  const dispatch = useDispatch()
+
+  const changeRouter = (value) => {
+    dispatch(inputTitle(value))
+  }
   return (
-      <CDBSidebar style={{height:'100%'}}>
-        <CDBSidebarHeader prefix={<i className="fa fa-bars" />}>Contrast</CDBSidebarHeader>
-        <CDBSidebarContent style={{'flexGrow':'1'}}>
-          <CDBSidebarMenu>
-            <CDBSidebarMenuItem icon="th-large">Dashboard</CDBSidebarMenuItem>
-            <CDBSidebarMenuItem icon="sticky-note">Components</CDBSidebarMenuItem>
-            <CDBSidebarMenuItem icon="credit-card" iconType="solid">
-              Metrics
-            </CDBSidebarMenuItem>
-          </CDBSidebarMenu>
-        </CDBSidebarContent>
-        <CDBSidebarFooter style={{ textAlign: 'center' }}>
-          <div
-            className="sidebar-btn-wrapper"
-            style={{padding: '20px 5px'}}
-          >
-            Sidebar Footer
-          </div>
-        </CDBSidebarFooter>
-      </CDBSidebar>
+    <CDBSidebar style={{}}>
+      <CDBSidebarHeader prefix={<i className="fa fa-bars" />}><div style={{ fontSize: '30px' }}>it tech</div></CDBSidebarHeader>
+      <CDBSidebarContent style={{ 'flexGrow': '1' }}>
+        <CDBSidebarMenu>
+          <CDBSidebarMenuItem icon="th-large"><Link to="/" onClick={() => changeRouter('ASN Information')}>ASN Information</Link></CDBSidebarMenuItem>
+          <CDBSidebarMenuItem icon="th-large"><Link to="/azure" onClick={() => changeRouter('Azure Tenant')}>Azure Tenant</Link></CDBSidebarMenuItem>
+          <CDBSidebarMenuItem icon="sticky-note"><Link to="/geolocation" onClick={() => changeRouter('Geolocation')}>Geolocation</Link></CDBSidebarMenuItem>
+          <CDBSidebarMenuItem icon="credit-card"><Link to="/coderepo" onClick={() => changeRouter('Code Repository')}>Code Repository</Link></CDBSidebarMenuItem>
+          <CDBSidebarMenuItem icon="th-large"><Link to="/dns-name" onClick={() => changeRouter('DNS Name')}>DNS Name</Link></CDBSidebarMenuItem>
+          <CDBSidebarMenuItem icon="th-large"><Link to="/email-address" onClick={() => changeRouter('Email Address')}>Email Address</Link></CDBSidebarMenuItem>
+          <CDBSidebarMenuItem icon="th-large">Finding</CDBSidebarMenuItem>
+          <CDBSidebarMenuItem icon="th-large">Open TCP Port</CDBSidebarMenuItem>
+          <CDBSidebarMenuItem icon="th-large">Organization Indication</CDBSidebarMenuItem>
+          <CDBSidebarMenuItem icon="th-large">Scanning Information</CDBSidebarMenuItem>
+          <CDBSidebarMenuItem icon="th-large">Social Profiles</CDBSidebarMenuItem>
+          <CDBSidebarMenuItem icon="th-large">Storage Bucket</CDBSidebarMenuItem>
+          <CDBSidebarMenuItem icon="th-large">Technology</CDBSidebarMenuItem>
+          <CDBSidebarMenuItem icon="th-large">Web Application Firewall (WAF)</CDBSidebarMenuItem>
+          <CDBSidebarMenuItem icon="th-large">General URL</CDBSidebarMenuItem>
+        </CDBSidebarMenu>
+      </CDBSidebarContent>
+    </CDBSidebar>
   );
 };

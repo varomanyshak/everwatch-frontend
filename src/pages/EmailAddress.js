@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Col, Row, Nav, Card, Image, Button, Table, Dropdown, ProgressBar, ButtonGroup, Poupe, Marker } from '@themesberg/react-bootstrap';
 import { Container } from 'react-bootstrap';
-import newScan from '../confgi/common';
+import newScan from '../config/common';
 
 const EmailAddress = (props) => {
 

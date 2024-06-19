@@ -9,7 +9,7 @@ import {
   TableColumnType,
   TableHeader
 } from "react-bs-datatable";
-import newScan from '../confgi/common';
+import newScan from '../config/common';
 
 const STORY_HEADERS = [
   {

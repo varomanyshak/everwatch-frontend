@@ -9,12 +9,12 @@ import {
   TableColumnType,
   TableHeader
 } from "react-bs-datatable";
-import newScan from '../confgi/common';
+import { useSelector, useDispatch } from 'react-redux'  
+import newScan from '../config/common';
 import DetailModal from '../components/DetailModal';
-import "bootstrap/dist/css/bootstrap.css";
 
-
-const Asn = (props) => {
+const Asn = () => {
+  const Tabledata = JSON.parse(useSelector((state) => state.counter.value)).ASN
   const [modalShow, setModalShow] = useState(false);
   const [detailObj, setdetailObj] = useState({
     confidence: "",
@@ -55,9 +55,8 @@ const Asn = (props) => {
     setModalShow(true)
   }
 
-
   useEffect(() => {
-    // console.log(props.Tabledata);
+    // console.log(Tabledata);
   }, [])
 
 
@@ -109,23 +108,8 @@ const Asn = (props) => {
   ];
   return (
     <>
-      <Row>
-        <Col className="d-flex justify-content-end">
-          <Card style={{ 'marginTop': '-40px' }}>
-            <Card.Body>
-              <Card.Title>Total : {props.Tabledata.length}</Card.Title>
-              <Card.Text>
-                New : {newScan(props.Tabledata)}
-              </Card.Text>
-            </Card.Body>
-          </Card>
-        </Col>
-        <Col className='d-flex justify-content-center' ><h1>ASN Information</h1></Col>
-        <Col></Col>
-      </Row>
-
       <DatatableWrapper
-        body={props.Tabledata}
+        body={Tabledata}
         headers={STORY_HEADERS}
         paginationOptionsProps={{
           initialState: {
@@ -165,7 +149,7 @@ const Asn = (props) => {
         </Table>
       </DatatableWrapper>
       {
-        props.Tabledata.length == 0 ? (
+        Tabledata.length == 0 ? (
           <center>
             <h3>Token expired</h3>
           </center>
