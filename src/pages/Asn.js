@@ -15,6 +15,7 @@ import DetailModal from '../components/DetailModal';
 
 const Asn = () => {
   const Tabledata = JSON.parse(useSelector((state) => state.counter.value)).ASN
+  console.log(Tabledata[0]);
   const [modalShow, setModalShow] = useState(false);
   const [detailObj, setdetailObj] = useState({
     confidence: "",
@@ -55,35 +56,45 @@ const Asn = () => {
     setModalShow(true)
   }
 
-  useEffect(() => {
-    // console.log(Tabledata);
-  }, [])
-
-
   const STORY_HEADERS = [
+    {
+      prop: "_data.country",
+      title: "Country",
+      isSortable: true
+    },
+    {
+      prop: "_data.name",
+      title: "Host",
+      isSortable: true
+    },
+    {
+      prop: "_data.subnet",
+      title: "Subnet",
+      isSortable: true
+    },
     {
       prop: "module",
       title: "Module",
       isSortable: true
     },
-    {
-      prop: "",
-      title: "Data",
-      cell: (row) => (
-        <>
-          <Card className='Asn-card' onClick={() => listDetail(row)}>
-            <Card.Body className='p-2' >
-              <Card.Title style={{ fontSize: '13px' }}>Country : {row._data.country}</Card.Title>
-              <Card.Text style={{ fontSize: '12px' }}>
-                {row._data.name}<br />
-                {row._data.subnet}
-                {row._data.subnet}
-              </Card.Text>
-            </Card.Body>
-          </Card>
-        </>
-      )
-    },
+    // {
+    //   prop: "",
+    //   title: "Data",
+    //   cell: (row) => (
+    //     <>
+    //       <Card className='Asn-card' onClick={() => listDetail(row)}>
+    //         <Card.Body className='p-2' >
+    //           <Card.Title style={{ fontSize: '13px' }}>Country : {row._data.country}</Card.Title>
+    //           <Card.Text style={{ fontSize: '12px' }}>
+    //             {row._data.name}<br />
+    //             {row._data.subnet}
+    //             {row._data.subnet}
+    //           </Card.Text>
+    //         </Card.Body>
+    //       </Card>
+    //     </>
+    //   )
+    // },
     {
       prop: "_source",
       title: "IP Address, Module, Tag"
@@ -106,6 +117,7 @@ const Asn = () => {
       )
     }
   ];
+
   return (
     <>
       <DatatableWrapper

@@ -14,6 +14,7 @@ import Geolocation from './pages/Geolocation.js'
 import CodeRepo from './pages/CodeRepo.js';
 import DnsName from './pages/DnsName.js'
 import EmailAddress from './pages/EmailAddress.js';
+import OpenTcp from './pages/OpenTcp.js';
 import filterData from './sheet.js'
 import filterObj from './config/filterObj';
 import Sidebar from './components/Sidebar.js';
@@ -40,6 +41,7 @@ function App() {
             <Route path='coderepo' element={<CodeRepo Tabledata={Tabledata.CodeRepo} />} />
             <Route path='dns-name' element={<DnsName Tabledata={Tabledata.DNS} />} />
             <Route path='email-address' element={<EmailAddress Tabledata={Tabledata.EmailAddress} />} />
+            <Route path='open-tcp' element={<OpenTcp />} />
           </Route>
         </Routes>
       </BrowserRouter>

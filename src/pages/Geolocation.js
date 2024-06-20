@@ -46,7 +46,7 @@ const Azure = (props) => {
             <center>
                 <h1> Geolocation</h1>
             </center>
-            <Row>
+            {/* <Row>
                 <Col style={cardCOl}>
                     <Card
                         bg={"dark"}
@@ -118,33 +118,35 @@ const Azure = (props) => {
                         </Card.Body>
                     </Card>
                 </Col>
-            </Row>
+            </Row> */}
             <Row>
-                <Col> <div style={{
-                    'width': '100%',
-                    'height': '700px',
-                    'boxShadow': '0 0 10px 5px #555',
-                }}>
-                    <MapContainer center={[-23.547121, -46.637186]} zoom={5} scrollWheelZoom={true} style={{ 'height': '100%', 'width': '100%' }}>
-                        <TileLayer
-                            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                        />
-                        {
-                            locations.map((item, index) => {
-                                let position = JSON.parse(item)
-                                return (
-                                    <Marker position={[position.latitude, position.longitude]} icon={PIcon} key={index}>
-                                        <Popup>
-                                            {`Country: ${position.country_name},  City : ${position.city_name},  IP: ${position.ip}`}
-                                        </Popup>
-                                    </Marker>
-                                )
-                            })
-                        }
-                    </MapContainer>
-                </div></Col>
-                <Col>2</Col>
+                <Col>
+                    <div style={{
+                        'width': '100%',
+                        'height': '700px',
+                        'boxShadow': '0 0 10px 5px #555',
+                    }}>
+                        <MapContainer center={[-23.547121, -46.637186]} zoom={5} scrollWheelZoom={true} style={{ 'height': '100%', 'width': '100%' }}>
+                            <TileLayer
+                                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                            />
+                            {
+                                locations.map((item, index) => {
+                                    let position = JSON.parse(item)
+                                    return (
+                                        <Marker position={[position.latitude, position.longitude]} icon={PIcon} key={index}>
+                                            <Popup>
+                                                {`Country: ${position.country_name},  City : ${position.city_name},  IP: ${position.ip}`}
+                                            </Popup>
+                                        </Marker>
+                                    )
+                                })
+                            }
+                        </MapContainer>
+                    </div>
+                </Col>
+                {/* <Col>2</Col> */}
             </Row>
             <Row>
                 <Col>1

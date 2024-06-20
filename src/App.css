@@ -25,3 +25,44 @@
 .hQSxZz {
   margin: 5px 15px!important;
 }
+/* 
+
+const portTile = {
+  width: '60px',
+  height: '60px',
+  maxWidth: 'auto',
+  color: 'white',
+  padding: '2px',
+  backgroundColor: '#2196f3',
+  margin: '0px',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  cursor: pointer,
+  transition: '0.3s'
+
+}
+
+// transform: scale(1.2); */
+
+.portTile {
+  width: 60px;
+  height: 60px;
+  max-width: 60px;
+  color: white;
+  padding: 2px;
+  background-color: #2196f3;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.3s;
+  border-radius: 1px;
+  box-shadow: 0 0 2px rgba(255, 255, 255, 0.479);
+}
+.portTile:hover {
+  transform: scale(1.5);
+  background-color: #2195f363;
+
+}
