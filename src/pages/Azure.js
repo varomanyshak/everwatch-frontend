@@ -3,7 +3,7 @@ import { Col, Row, Nav, Card, Image, Button, Table, Dropdown, ProgressBar, Butto
 import { Container } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux'  
 
-import newScan from '../config/common';
+import common from '../config/common';
 import DetailModal from '../components/DetailModal';
 
 const Azure = (props) => {
@@ -58,7 +58,7 @@ const Azure = (props) => {
                         <Card.Body>
                             <Card.Title>Total : {Tabledata.length}</Card.Title>
                             <Card.Text>
-                                New : {newScan(Tabledata)}
+                                New : {common.newScan(Tabledata)}
                             </Card.Text>
                         </Card.Body>
                     </Card>

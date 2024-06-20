@@ -32,7 +32,6 @@ export default (props) => {
                     {props.data.id}
                 </Modal.Title>
             </Modal.Header>
-
             <Modal.Body>
                 {props.type == "asn" ? (
                     <Card>
@@ -142,16 +141,20 @@ export default (props) => {
                             <Col>{props.data._priority}</Col>
                         </Row>
                         <Row>
-                            <Col><h6>Resolved_hosts</h6></Col>
-                            <Col>{props.data._resolved_hosts}</Col>
-                        </Row>
-                        <Row>
                             <Col><h6>Scope_distance</h6></Col>
                             <Col>{props.data._scope_distance}</Col>
                         </Row>
                         <Row>
-                            <Col><h6>Source</h6></Col>
-                            <Col>{props.data._source}</Col>
+                            <Col><h6>IP address</h6></Col>
+                            <Col>{props.data._source.ip_address}</Col>
+                        </Row>
+                        <Row>
+                            <Col><h6>module</h6></Col>
+                            <Col>{props.data._source.module}</Col>
+                        </Row>
+                        <Row>
+                            <Col><h6>Tags</h6></Col>
+                            <Col>{props.data._source.tags}</Col>
                         </Row>
                         <Row>
                             <Col><h6>Stats_recorded</h6></Col>

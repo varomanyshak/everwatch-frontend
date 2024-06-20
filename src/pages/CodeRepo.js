@@ -9,7 +9,7 @@ import {
   TableColumnType,
   TableHeader
 } from "react-bs-datatable";
-import newScan from '../config/common';
+import common from '../config/common';
 
 const STORY_HEADERS = [
   {
@@ -55,7 +55,7 @@ const CodeRepo = (props) => {
             <Card.Body>
               <Card.Title>Total : {props.Tabledata.length}</Card.Title>
               <Card.Text>
-                New : {newScan(props.Tabledata)}
+                New : {common.newScan(props.Tabledata)}
               </Card.Text>
             </Card.Body>
           </Card>

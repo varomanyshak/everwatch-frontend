@@ -1,5 +1,6 @@
 import axios from "axios";
 import filterTypeStr from "./config/filter";
+import common from "./config/common";
 
 var data;
 var filterData = {};
@@ -42,6 +43,9 @@ const asnData = (ary) => {
 }
 
 
+
+
+
 if (data === undefined) {
     filterData.ASN = []
     filterData.Azure = []
@@ -53,9 +57,11 @@ if (data === undefined) {
 } else {
     let ASN = data.filter(item => (item[14] == "ASN"));
     ASN.unshift(data[0]);
-    filterData.ASN = (asnData(changeOBJ(ASN)));
+    filterData.ASN = common.asnExtractValues((asnData(changeOBJ(ASN))))
 
-    filterTypeStr(asnData(changeOBJ(ASN)), 'scans')
+    // filterTypeStr(asnData(changeOBJ(ASN)), 'scans')
+
+
 
     let Azure = data.filter(item => (item[14] == "AZURE_TENANT"));
     Azure.unshift(data[0]); filterData.Azure = changeOBJ(Azure);
