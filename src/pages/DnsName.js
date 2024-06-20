@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Col, Row, Nav, Card, Image, Button, Table, Dropdown, ProgressBar, ButtonGroup } from '@themesberg/react-bootstrap';
 import { Container } from 'react-bootstrap';
-import newScan from '../config/common';
+import common from '../config/common';
 
 const DnsName = (props) => {
     return (
@@ -12,7 +12,7 @@ const DnsName = (props) => {
                         <Card.Body>
                             <Card.Title>Total : {props.Tabledata.length}</Card.Title>
                             <Card.Text>
-                                New : {newScan(props.Tabledata)}
+                                New : {common.newScan(props.Tabledata)}
                             </Card.Text>
                         </Card.Body>
                     </Card>

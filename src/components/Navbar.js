@@ -2,9 +2,7 @@
 import React, { useState } from "react";
 import { Row, Col, Nav, Form, Card, Image, Navbar, Dropdown, Container, ListGroup, InputGroup, Button } from '@themesberg/react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux'
-import newScan from "../config/common";
-
-
+import common from "../config/common";
 
 const calc_twelve = (data, hours) => {
   let newary = []
@@ -31,7 +29,7 @@ const calc_twelve = (data, hours) => {
 const header_info = (data) => {
   let dataAry = JSON.parse(data);
   let all_data = dataAry.length
-  let last = newScan(dataAry)
+  let last = common.newScan(dataAry)
   let Htwelve = calc_twelve(dataAry, 12)
   return {
     all: all_data,
