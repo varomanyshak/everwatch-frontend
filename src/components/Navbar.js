@@ -55,7 +55,9 @@ export default (props) => {
     width: '100%',
     zIndex: '2000',
     display: 'flex',
-    alignItem: 'center'
+    alignItem: 'center',
+    marginLeft: '-15px',
+    padding:'0 15px'    
   }
   const rowStyle = {
     width: 'calc(100% - 280px)',

@@ -7,9 +7,9 @@ import Navbar from "../components/Navbar";
 const Layout = (props) => {
   return (
     <>
-      <Container fluid style={{ overflow: 'auto', paddingTop: '120px' }} >
+      <Container fluid style={{ overflow: 'auto', paddingTop: '120px'}} >
         <Navbar />
-        <Outlet />
+        <Outlet style={{background:'#444', margin:'0'}}/>
       </Container>
     </>
   )

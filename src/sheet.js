@@ -1,9 +1,5 @@
 import axios from "axios";
 import filterTypeStr from "./config/filter";
-import { useSelector, useDispatch } from 'react-redux'
-import { dataIncrement } from './features/counter/dataSlice'
-
-
 
 var data;
 var filterData = {};
@@ -29,15 +25,11 @@ await axios.get('https://sheets.googleapis.com/v4/spreadsheets/1_GxPa5ZDLRVscL3H
     .then(
         (res) => {
             data = res.data.values
-            // const dispatch = useDispatch()
-            // dispatch(dataIncrement(changeOBJ(data)))
-            // console.log('ooooo', changeOBJ(data));
         })
     .catch(
         (err) => {
             console.log("Axios Error: ", err);
         });
-
 
 
 const asnData = (ary) => {
@@ -48,12 +40,6 @@ const asnData = (ary) => {
     }
     return ary
 }
-
-
-
-
-
-
 
 
 if (data === undefined) {
@@ -88,6 +74,9 @@ if (data === undefined) {
     let EmailAddress = data.filter(item => (item[14] == "EMAIL_ADDRESS"))
     EmailAddress.unshift(data[0])
     filterData.EmailAddress = changeOBJ(EmailAddress);
+    let OpenTcp = data.filter(item => (item[14] == "OPEN_TCP_PORT"))
+    OpenTcp.unshift(data[0])
+    filterData.OpenTcp = changeOBJ(OpenTcp);
 }
 
 export default filterData
