@@ -32,8 +32,8 @@ export default () => {
           <CDBSidebarMenuItem icon="envelope"><Link to="/email-address" onClick={() => changeRouter('Email Address')}>Email Address</Link></CDBSidebarMenuItem>
           <CDBSidebarMenuItem icon="search"><Link to="/finding" onClick={() => changeRouter('Finding')}>Finding</Link></CDBSidebarMenuItem>
           <CDBSidebarMenuItem icon="check"><Link to="/open-tcp" onClick={() => changeRouter('Open TCP Port')}>Open TCP Port</Link></CDBSidebarMenuItem>
-          <CDBSidebarMenuItem icon="th-large">Organization Indication</CDBSidebarMenuItem>
-          <CDBSidebarMenuItem icon="th-large">Scanning Information</CDBSidebarMenuItem>
+          <CDBSidebarMenuItem icon="th-large"><Link to="/org" onClick={() => changeRouter('Organization Indication')}>Organization Indication</Link></CDBSidebarMenuItem>
+          <CDBSidebarMenuItem icon="th-large"><Link to="/scan" onClick={() => changeRouter('Scanning Information')}>Scanning Information</Link></CDBSidebarMenuItem>
           <CDBSidebarMenuItem icon="th-large">Social Profiles</CDBSidebarMenuItem>
           <CDBSidebarMenuItem icon="th-large">Storage Bucket</CDBSidebarMenuItem>
           <CDBSidebarMenuItem icon="check"><Link to="/technology" onClick={() => changeRouter('Technology')}>Technology</Link></CDBSidebarMenuItem>

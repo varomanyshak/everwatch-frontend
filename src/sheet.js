@@ -86,6 +86,14 @@ if (data === undefined) {
     Find.unshift(data[0])
     filterData.Find = (changeOBJ(Find))
 
+    let Org = data.filter(item => (item[14] == "ORG_STUB"))
+    Org.unshift(data[0])
+    filterData.Org = (changeOBJ(Org))
+    
+    let Scan = data.filter(item => (item[14] == "SCAN"))
+    Scan.unshift(data[0])
+    filterData.Scan = (changeOBJ(Scan))
+
 }
 
 export default filterData
