@@ -43,87 +43,11 @@ const Azure = (props) => {
 
     return (
         <>
-            <center>
-                <h1> Geolocation</h1>
-            </center>
-            {/* <Row>
-                <Col style={cardCOl}>
-                    <Card
-                        bg={"dark"}
-                        key={"light"}
-                        text={"white"}
-                        style={{ width: '18rem' }}
-                        className="mb-2"
-                    >
-                        <Card.Header>Header</Card.Header>
-                        <Card.Body>
-                            <Card.Title>{"white"} Card Title </Card.Title>
-                            <Card.Text>
-                                Some quick example text to build on the card title and make up the
-                                bulk of the card's content.
-                            </Card.Text>
-                        </Card.Body>
-                    </Card>
-                </Col>
-                <Col className='d-fex justify-content-center' style={cardCOl}>
-                    <Card
-                        bg={"dark"}
-                        key={"light"}
-                        text={"white"}
-                        style={{ width: '18rem' }}
-                        className="mb-2"
-                    >
-                        <Card.Header>Header</Card.Header>
-                        <Card.Body>
-                            <Card.Title>{"white"} Card Title </Card.Title>
-                            <Card.Text>
-                                Some quick example text to build on the card title and make up the
-                                bulk of the card's content.
-                            </Card.Text>
-                        </Card.Body>
-                    </Card>
-                </Col><Col className='d-fex justify-content-center' style={cardCOl}>
-                    <Card
-                        bg={"dark"}
-                        key={"light"}
-                        text={"white"}
-                        style={{ width: '18rem' }}
-                        className="mb-2"
-                    >
-                        <Card.Header>Header</Card.Header>
-                        <Card.Body>
-                            <Card.Title>{"white"} Card Title </Card.Title>
-                            <Card.Text>
-                                Some quick example text to build on the card title and make up the
-                                bulk of the card's content.
-                            </Card.Text>
-                        </Card.Body>
-                    </Card>
-                </Col><Col className='d-fex justify-content-center' style={cardCOl}>
-                    <Card
-                        bg={"dark"}
-                        key={"light"}
-                        text={"white"}
-                        style={{ width: '18rem' }}
-                        className="mb-2"
-
-                    >
-                        <Card.Header>Header</Card.Header>
-                        <Card.Body>
-                            <Card.Title>{"white"} Card Title </Card.Title>
-                            <Card.Text>
-                                Some quick example text to build on the card title and make up the
-                                bulk of the card's content.
-                            </Card.Text>
-                        </Card.Body>
-                    </Card>
-                </Col>
-            </Row> */}
             <Row>
                 <Col>
                     <div style={{
                         'width': '100%',
-                        'height': '700px',
+                        'height': '800px',
                         'boxShadow': '0 0 10px 5px #555',
                     }}>
                         <MapContainer center={[-23.547121, -46.637186]} zoom={5} scrollWheelZoom={true} style={{ 'height': '100%', 'width': '100%' }}>
@@ -146,17 +70,7 @@ const Azure = (props) => {
                         </MapContainer>
                     </div>
                 </Col>
-                {/* <Col>2</Col> */}
             </Row>
-            <Row>
-                <Col>1
-
-
-                </Col>
-                <Col>2</Col>
-            </Row>
-
-
         </>
     )
 };

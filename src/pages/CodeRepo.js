@@ -49,21 +49,6 @@ const CodeRepo = (props) => {
 
   return (
     <>
-      <Row>
-        <Col className="d-flex justify-content-end">
-          <Card style={{ 'marginTop': '-40px' }}>
-            <Card.Body>
-              <Card.Title>Total : {props.Tabledata.length}</Card.Title>
-              <Card.Text>
-                New : {common.newScan(props.Tabledata)}
-              </Card.Text>
-            </Card.Body>
-          </Card>
-        </Col>
-        <Col className='d-flex justify-content-center' ><h1>Code Repository</h1></Col>
-        <Col></Col>
-      </Row>
-
       <DatatableWrapper
         body={props.Tabledata}
         headers={STORY_HEADERS}
