@@ -36,7 +36,7 @@ export default () => {
           <CDBSidebarMenuItem icon="th-large">Scanning Information</CDBSidebarMenuItem>
           <CDBSidebarMenuItem icon="th-large">Social Profiles</CDBSidebarMenuItem>
           <CDBSidebarMenuItem icon="th-large">Storage Bucket</CDBSidebarMenuItem>
-          <CDBSidebarMenuItem icon="th-large">Technology</CDBSidebarMenuItem>
+          <CDBSidebarMenuItem icon="check"><Link to="/technology" onClick={() => changeRouter('Technology')}>Technology</Link></CDBSidebarMenuItem>
           <CDBSidebarMenuItem icon="th-large">Web Application Firewall (WAF)</CDBSidebarMenuItem>
           <CDBSidebarMenuItem icon="th-large">General URL</CDBSidebarMenuItem>
         </CDBSidebarMenu>
