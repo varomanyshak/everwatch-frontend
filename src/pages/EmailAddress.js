@@ -7,21 +7,6 @@ const EmailAddress = (props) => {
 
     return (
         <>
-            <Row>
-                <Col className="d-flex justify-content-end">
-                    <Card style={{ 'marginTop': '-40px' }}>
-                        <Card.Body>
-                            <Card.Title>Total : {props.Tabledata.length}</Card.Title>
-                            <Card.Text>
-                                New : {common.newScan(props.Tabledata)}
-                            </Card.Text>
-                        </Card.Body>
-                    </Card>
-                </Col>
-                <Col className='d-flex justify-content-center' ><h1>Email Address</h1></Col>
-                <Col></Col>
-            </Row>
-
             <Container style={{
                 'display': 'flex',
                 'flexWrap': 'wrap',
@@ -30,7 +15,6 @@ const EmailAddress = (props) => {
             }}>
                 {props.Tabledata.map((item, index) => (
                     <Card style={{ width: '18rem' }} key={index}>
-                        {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
                         <Card.Body>
                             <Card.Title>{item.timestamp}</Card.Title>
                             <Card.Text>

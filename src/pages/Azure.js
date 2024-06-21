@@ -52,20 +52,6 @@ const Azure = (props) => {
 
     return (
         <>
-            <Row>
-                <Col className="d-flex justify-content-end">
-                    <Card style={{ 'marginTop': '-40px' }}>
-                        <Card.Body>
-                            <Card.Title>Total : {Tabledata.length}</Card.Title>
-                            <Card.Text>
-                                New : {common.newScan(Tabledata)}
-                            </Card.Text>
-                        </Card.Body>
-                    </Card>
-                </Col>
-                <Col className='d-flex justify-content-center' ><h1>Azure Tanet</h1></Col>
-                <Col></Col>
-            </Row>
             <Container style={{
                 'display': 'flex',
                 'flexWrap': 'wrap',

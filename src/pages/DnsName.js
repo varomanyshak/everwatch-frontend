@@ -6,21 +6,6 @@ import common from '../config/common';
 const DnsName = (props) => {
     return (
         <>
-            <Row>
-                <Col className="d-flex justify-content-end">
-                    <Card style={{ 'marginTop': '-40px' }}>
-                        <Card.Body>
-                            <Card.Title>Total : {props.Tabledata.length}</Card.Title>
-                            <Card.Text>
-                                New : {common.newScan(props.Tabledata)}
-                            </Card.Text>
-                        </Card.Body>
-                    </Card>
-                </Col>
-                <Col className='d-flex justify-content-center' ><h1>DNS Name</h1></Col>
-                <Col></Col>
-            </Row>
-
             <Container style={{
                 'display': 'flex',
                 'flexWrap': 'wrap',
