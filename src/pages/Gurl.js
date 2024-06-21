@@ -10,7 +10,6 @@ import {
   useRef,
   StrictMode,
 } from "react";
-import { createRoot } from "react-dom/client";
 import { AgGridReact } from "@ag-grid-community/react";
 import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
 import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
@@ -18,29 +17,10 @@ import { ModuleRegistry } from "@ag-grid-community/core";
 import "@ag-grid-community/styles/ag-grid.css";
 import "@ag-grid-community/styles/ag-theme-quartz.css";
 
-import DetailModal from '../components/DetailModal';
-import common from '../config/common';
-
 ModuleRegistry.registerModules([ClientSideRowModelModule, RowGroupingModule]);
 
 const Gurl = () => {
   const TableData = JSON.parse(useSelector((state) => state.counter.value)).Gurl
-  // console.log(TableData);
-
-  const Tech = JSON.parse(useSelector((state) => state.counter.value)).Technology
-
-  const ChangeChartData = (data) => {
-    let ChartAry = [];
-    for (const key in data) {
-      ChartAry.push({
-        host: key,
-        count: data[key].length
-      })
-    }
-    return ChartAry
-  }
-  const ChartAry = ChangeChartData(common.TechGroupHost(Tech));
-  const TableAry = common.ChangeTechTableData(Tech);
 
   function groupByHost(data) {
     const groupedData = {};
@@ -66,18 +46,6 @@ const Gurl = () => {
     return PieAry
   }
   const PieData = PieAry(groupByHost(TableData));
-
-
-
-
-
-
-
-
-
-
-
-
 
   return (
     <>
@@ -112,7 +80,6 @@ const GurlGrid = (props) => {
     { field: "_resolved_hosts" },
     { field: "module" },
     { field: "timestamp" },
-    // { field: "bronze" },
   ]);
   const defaultColDef = useMemo(() => {
     return {
@@ -128,9 +95,6 @@ const GurlGrid = (props) => {
 
   const onGridReady = useCallback((params) => {
     setRowData(props.data);
-    // fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
-    //   .then((resp) => resp.json())
-    //   .then((data) => setRowData(data));
   }, []);
 
   return (
@@ -224,8 +188,6 @@ const GurlChart = (props) => {
           activeIndex={state.activeIndex}
           activeShape={renderActiveShape}
           data={props.data}
-          // cx="20%"
-          // cy="20%"
           innerRadius={100}
           outerRadius={200}
           fill="#8884d8"

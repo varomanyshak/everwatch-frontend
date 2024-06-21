@@ -229,50 +229,6 @@ export default {
             };
         });
         return result;
-    },
-    FindExtractValus: function (arr) {
-        var result = arr.map(item => {
-
-            // // var _BaseEvent__host  = item._BaseEvent__host;
-            // // var scans  = item.scans;
-            // // var _resolved_hosts  = item._resolved_hosts;
-            // // var parsed  = item.parsed;
-            // // var _scope_distance  = item._scope_distance;
-            // // var _dummy  = item._dummy;
-            // // var _BaseEvent__words  = item._BaseEvent__words;
-            // // var _priority  = item._priority;
-            // // var _internal  = item._internal;
-            // // var _id  = item._id;
-            // // var confidence  = item.confidence;
-            // // var _port  = item._port;
-            // // var id  = item.id;
-            // // var module  = item.module;
-            // // var _type  = item._type;
-            // // var _stats_recorded  = item._stats_recorded;
-            // // var timestamp  = item.timestamp;
-            // // var _source_id  = item._source_id;
-            // // var _hash  = item._hash;
-            // // var _tags  = item._tags;
-            // // var _data  = item._data;
-            // // var _source  = item._source;
-            // // var _module_priority  = item._module_priority;
-            // // var scan_id  = item.scan_id;
-            // // var scan  = item.scan;
-
-
-            
-
-            // // let value = item._data.replaceAll("{", "")
-            // // value = value.replaceAll("}", "")
-
-            // // let host = value.match(/'host': '(.*?)'/)[1];
-            // // let description = value.match(/'description': '(.*?)'/)[1];
-            // // let port = value.match(/:([0-9]+)\/'/)[1];
-
-            // return {
-            //     value
-            // };
-        });
-        return result;
     }
+
 }
