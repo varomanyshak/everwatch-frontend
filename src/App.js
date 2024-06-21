@@ -16,6 +16,8 @@ import DnsName from './pages/DnsName.js'
 import EmailAddress from './pages/EmailAddress.js';
 import OpenTcp from './pages/OpenTcp.js';
 import Technology from './pages/Technology.js';
+import Gurl from './pages/Gurl.js';
+import Finding from './pages/Finding.js';
 import filterData from './sheet.js'
 import filterObj from './config/filterObj';
 import Sidebar from './components/Sidebar.js';
@@ -42,8 +44,10 @@ function App() {
             <Route path='coderepo' element={<CodeRepo Tabledata={Tabledata.CodeRepo} />} />
             <Route path='dns-name' element={<DnsName Tabledata={Tabledata.DNS} />} />
             <Route path='email-address' element={<EmailAddress Tabledata={Tabledata.EmailAddress} />} />
+            <Route path='g-url' element={<Gurl />} />
             <Route path='open-tcp' element={<OpenTcp />} />
             <Route path='technology' element={<Technology />} />
+            <Route path='finding' element={<Finding />} />
           </Route>
         </Routes>
       </BrowserRouter>
