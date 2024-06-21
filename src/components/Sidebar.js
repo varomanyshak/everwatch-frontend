@@ -30,15 +30,16 @@ export default () => {
           <CDBSidebarMenuItem icon="credit-card"><Link to="/coderepo" onClick={() => changeRouter('Code Repository')}>Code Repository</Link></CDBSidebarMenuItem>
           <CDBSidebarMenuItem icon="user"><Link to="/dns-name" onClick={() => changeRouter('DNS Name')}>DNS Name</Link></CDBSidebarMenuItem>
           <CDBSidebarMenuItem icon="envelope"><Link to="/email-address" onClick={() => changeRouter('Email Address')}>Email Address</Link></CDBSidebarMenuItem>
-          <CDBSidebarMenuItem icon="search">Finding</CDBSidebarMenuItem>
+          <CDBSidebarMenuItem icon="search"><Link to="/finding" onClick={() => changeRouter('Finding')}>Finding</Link></CDBSidebarMenuItem>
           <CDBSidebarMenuItem icon="check"><Link to="/open-tcp" onClick={() => changeRouter('Open TCP Port')}>Open TCP Port</Link></CDBSidebarMenuItem>
           <CDBSidebarMenuItem icon="th-large">Organization Indication</CDBSidebarMenuItem>
           <CDBSidebarMenuItem icon="th-large">Scanning Information</CDBSidebarMenuItem>
           <CDBSidebarMenuItem icon="th-large">Social Profiles</CDBSidebarMenuItem>
           <CDBSidebarMenuItem icon="th-large">Storage Bucket</CDBSidebarMenuItem>
           <CDBSidebarMenuItem icon="check"><Link to="/technology" onClick={() => changeRouter('Technology')}>Technology</Link></CDBSidebarMenuItem>
-          <CDBSidebarMenuItem icon="th-large">Web Application Firewall (WAF)</CDBSidebarMenuItem>
-          <CDBSidebarMenuItem icon="th-large">General URL</CDBSidebarMenuItem>
+          {/* <CDBSidebarMenuItem icon="th-large">Web Application Firewall (WAF)</CDBSidebarMenuItem> */}
+          <CDBSidebarMenuItem icon="th-large">WAF</CDBSidebarMenuItem>
+          <CDBSidebarMenuItem icon="check"><Link to="/g-url" onClick={() => changeRouter('General URL')}>General URL</Link></CDBSidebarMenuItem>
         </CDBSidebarMenu>
       </CDBSidebarContent>
     </CDBSidebar>

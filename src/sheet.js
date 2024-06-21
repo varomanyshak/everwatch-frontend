@@ -48,6 +48,10 @@ if (data === undefined) {
     filterData.CodeRepo = []
     filterData.DNS = []
     filterData.EmailAddress = []
+    filterData.OpenTcp = []
+    filterData.Technology = []
+    filterData.Gurl = []
+
 } else {
     let ASN = data.filter(item => (item[14] == "ASN"));
     ASN.unshift(data[0]);
@@ -73,6 +77,15 @@ if (data === undefined) {
     let Technology = data.filter(item => (item[14] == "TECHNOLOGY"))
     Technology.unshift(data[0])
     filterData.Technology = asnData(changeOBJ(Technology))
+
+    let Gurl = data.filter(item => (item[14] == "URL"))
+    Gurl.unshift(data[0])
+    filterData.Gurl = changeOBJ(Gurl)
+
+    let Find = data.filter(item => (item[14] == "FINDING"))
+    Find.unshift(data[0])
+    filterData.Find = (changeOBJ(Find))
+
 }
 
 export default filterData
