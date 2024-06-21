@@ -14,7 +14,6 @@ import DetailModal from '../components/DetailModal';
 
 const Asn = () => {
   const Tabledata = JSON.parse(useSelector((state) => state.counter.value)).ASN
-  console.log(Tabledata[0]);
   const [modalShow, setModalShow] = useState(false);
   const [detailObj, setdetailObj] = useState({
     confidence: "",

@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit'
 export const titleSlice = createSlice({
   name: 'title',
   initialState: {
-    value: "ASN",
+    value: "ASN Inoformation",
   },
   reducers: {
     inputTitle: (state, action) => {
