@@ -17,7 +17,6 @@ import DetailModal from '../components/DetailModal';
 
 const OpenTcp = () => {
   const Tabledata = JSON.parse(useSelector((state) => state.counter.value)).OpenTcp
-  console.log(Tabledata[0]);
   const [modalShow, setModalShow] = useState(false);
   const [detailObj, setdetailObj] = useState({
     confidence: "",
@@ -81,7 +80,6 @@ const OpenTcp = () => {
   const hostData = printHostOccurrences(Tabledata, "_BaseEvent__host")
   const portData = printHostOccurrences(Tabledata, "_port")
   const portBodyStyle = {
-    // minHeight: '500px',
     gap: '10px',
     backgroundColor: '#192232',
     border: '2px solid #344054',
@@ -92,21 +90,25 @@ const OpenTcp = () => {
     margin: '0'
   }
 
-
   const STORY_HEADERS = [
-    
     {
-      prop: "module",
-      title: "Module",
+      prop: "_BaseEvent__host",
+      title: "Host",
       isSortable: true
     },
     {
-      prop: "_data",
-      title: "URL"
+      prop: "_port",
+      title: "Port",
+      isSortable: true
     },
     {
-      prop: "_stats_recorded",
-      title: "Last Update"
+      prop: "",
+      title: "IP address",
+      cell: (row) => {
+        var host_str = `${row._resolved_hosts[0]}, ${row._resolved_hosts[1]}`
+        return (host_str)
+      },
+      isSortable: true
     },
     {
       prop: "timestamp",
@@ -119,6 +121,7 @@ const OpenTcp = () => {
         <Button
           variant="outline-primary"
           size="sm"
+          onClick={()=>listDetail(row)}
         >
           Detail
         </Button>
@@ -128,22 +131,19 @@ const OpenTcp = () => {
 
   return (
     <>
-      {/* <Row style={{ height: '500px' }}>
-        <ChartExample data={portData} />
-      </Row> */}
       <Row style={portBodyStyle}>
         <h3 style={{ color: "white", marginBottom: '0' }}>Tcp Port</h3>
         <hr style={{ color: 'white' }} />
         {portData.map((item, index) => (
-          <div id={item.count} className='portTile'>{item.host}</div>
+          <div id={item.count} key={index} className='portTile'>{item.host}</div>
         ))}
       </Row>
       <Row style={{ height: '500px' }}>
-        <Col>
+        {/* <Col>
           <ChartExample2 data={hostData} />
-        </Col>
-        <Col>
-          <ChartExamplePie data={hostData} />
+        </Col> */}
+        <Col style={{ margin: '20px 0' }}>
+          <ChartHostPie data={hostData} />
         </Col>
       </Row>
       <Row className='p-5'>
@@ -153,7 +153,7 @@ const OpenTcp = () => {
           paginationOptionsProps={{
             initialState: {
               rowsPerPage: 10,
-              options: [5, 10, 15, 20]
+              options: [5, 10, 15, 20, 50, 100]
             }
           }}
         >
@@ -195,7 +195,6 @@ const OpenTcp = () => {
           </center>
         ) : ('')
       }
-
       <DetailModal
         show={modalShow}
         onHide={() => setModalShow(false)}
@@ -332,11 +331,11 @@ const ChartExample2 = (props) => {
 
   return <AgChartsReact options={options} />;
 };
-const ChartExamplePie = (props) => {
+const ChartHostPie = (props) => {
   const [options, setOptions] = useState({
     data: props.data,
     title: {
-      text: "Portfolio Composition",
+      text: "Host",
     },
     series: [
       {

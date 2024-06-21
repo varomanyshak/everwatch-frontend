@@ -55,7 +55,9 @@ export default (props) => {
     display: 'flex',
     alignItem: 'center',
     marginLeft: '-15px',
-    padding:'0 15px'    
+    padding:'0 15px',
+    paddingTop:'16px'
+
   }
   const rowStyle = {
     width: 'calc(100% - 280px)',
