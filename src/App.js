@@ -18,10 +18,11 @@ import OpenTcp from './pages/OpenTcp.js';
 import Technology from './pages/Technology.js';
 import Gurl from './pages/Gurl.js';
 import Finding from './pages/Finding.js';
+import Org from './pages/Org.js';
 import filterData from './sheet.js'
 import filterObj from './config/filterObj';
 import Sidebar from './components/Sidebar.js';
-
+import Scan from './pages/Scan.js';
 import "leaflet/dist/leaflet.css";
 import "./scss/volt.scss";
 import "./App.css"
@@ -48,6 +49,8 @@ function App() {
             <Route path='open-tcp' element={<OpenTcp />} />
             <Route path='technology' element={<Technology />} />
             <Route path='finding' element={<Finding />} />
+            <Route path='org' element={<Org />} />
+            <Route path='scan' element={<Scan />} />
           </Route>
         </Routes>
       </BrowserRouter>
