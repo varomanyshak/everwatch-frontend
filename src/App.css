@@ -64,5 +64,4 @@ const portTile = {
 .portTile:hover {
   transform: scale(1.5);
   background-color: #2195f363;
-
 }

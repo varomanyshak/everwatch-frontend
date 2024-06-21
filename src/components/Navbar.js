@@ -46,9 +46,7 @@ export default (props) => {
   const navStyle = {
     position: 'fixed',
     top: '0',
-    // left:'0',
-    height: '80px',
-    // background: '#4447',
+    height: '90px',
     backgroundColor: '#f5f8fb',
     width: '100%',
     zIndex: '2000',

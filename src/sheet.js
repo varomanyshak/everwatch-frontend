@@ -32,7 +32,6 @@ await axios.get('https://sheets.googleapis.com/v4/spreadsheets/1_GxPa5ZDLRVscL3H
             console.log("Axios Error: ", err);
         });
 
-
 const asnData = (ary) => {
     for (let i = 0; i < ary.length; i++) {
         let str = ary[i]._data;
@@ -42,10 +41,6 @@ const asnData = (ary) => {
     return ary
 }
 
-
-
-
-
 if (data === undefined) {
     filterData.ASN = []
     filterData.Azure = []
@@ -53,21 +48,13 @@ if (data === undefined) {
     filterData.CodeRepo = []
     filterData.DNS = []
     filterData.EmailAddress = []
-
 } else {
     let ASN = data.filter(item => (item[14] == "ASN"));
     ASN.unshift(data[0]);
     filterData.ASN = common.asnExtractValues((asnData(changeOBJ(ASN))))
-
-    // filterTypeStr(asnData(changeOBJ(ASN)), 'scans')
-
-
-
     let Azure = data.filter(item => (item[14] == "AZURE_TENANT"));
     Azure.unshift(data[0]); filterData.Azure = changeOBJ(Azure);
     filterData.Azure = (asnData(changeOBJ(Azure)));
-
-
     let GEOLOCATION = data.filter(item => (item[14] == "GEOLOCATION"))
     GEOLOCATION.unshift(data[0])
     filterData.GEOLOCATION = changeOBJ(GEOLOCATION);
@@ -80,10 +67,12 @@ if (data === undefined) {
     let EmailAddress = data.filter(item => (item[14] == "EMAIL_ADDRESS"))
     EmailAddress.unshift(data[0])
     filterData.EmailAddress = changeOBJ(EmailAddress);
-
     let OpenTcp = data.filter(item => (item[14] == "OPEN_TCP_PORT"))
     OpenTcp.unshift(data[0])
     filterData.OpenTcp = common.TcpPortExtractValues(changeOBJ(OpenTcp))
+    let Technology = data.filter(item => (item[14] == "TECHNOLOGY"))
+    Technology.unshift(data[0])
+    filterData.Technology = asnData(changeOBJ(Technology))
 }
 
 export default filterData

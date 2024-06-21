@@ -146,5 +146,88 @@ export default {
             };
         });
         return result;
+    },
+    TechGroupHost: function (data) {
+        const groupedData = {};
+        data.forEach(item => {
+            const host = item._data.host;
+            const technology = item._data.technology;
+            const url = item._data.url;
+
+            if (!groupedData[host]) {
+                groupedData[host] = [
+                    {
+                        technology: technology,
+                        url: url
+                    }
+                ];
+            } else {
+                groupedData[host].push({
+                    technology: technology,
+                    url: url
+                });
+            }
+        });
+        return groupedData;
+    },
+    ChangeTechTableData: function (arr) {
+        var result = arr.map(item => {
+            var _BaseEvent__host = item._BaseEvent__host;
+            var iscansd = item.scans;
+            var _resolved_hosts = item._resolved_hosts;
+            var parsed = item.parsed;
+            var _BaseEvent__words = item._BaseEvent__words;
+            var _priority = item._priority;
+            var _internal = item._internal;
+            var _id = item._id;
+            var confidence = item.confidence;
+            var _port = item._port;
+            var id = item.id;
+            var module = item.module;
+            var _type = item._type;
+            var _stats_recorded = item._stats_recorded;
+            var timestamp = item.timestamp;
+            var _source_id = item._source_id;
+            var _hash = item._hash;
+            var _tags = item._tags;
+            var Module = item.module;
+            var host = item._data.host;
+            var technology = item._data.technology;
+            var url = item._data.url;
+            var _source = item._source;
+            var _module_priority = item._module_priority;
+            var scan_id = item.scan_id;
+            var scan = item.scan;
+
+            return {
+                _BaseEvent__host,
+                iscansd,
+                _resolved_hosts,
+                parsed,
+                _BaseEvent__words,
+                _priority,
+                _internal,
+                _id,
+                confidence,
+                _port,
+                id,
+                module,
+                _type,
+                _stats_recorded,
+                timestamp,
+                _source_id,
+                _hash,
+                _tags,
+                Module,
+                host,
+                technology,
+                url,
+                _source,
+                _module_priority,
+                scan_id,
+                scan,
+            };
+        });
+        return result;
     }
 }

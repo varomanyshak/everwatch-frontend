@@ -20,9 +20,6 @@ const tenantName = {
 }
 
 export default (props) => {
-    console.log(props.data._type);
-    console.log(props.data);
-
     if (props.data._type = "OPEN_TCP_PORT") {
         return (
             <Modal
