@@ -21,7 +21,7 @@ import filterObj from './config/filterObj';
 import Sidebar from './components/Sidebar.js';
 import Scan from './pages/Scan.js';
 import Expire from './pages/Expire.js';
-
+import Social from './pages/Social.js';
 import "leaflet/dist/leaflet.css";
 import "./scss/volt.scss";
 import "./App.css"
@@ -59,6 +59,7 @@ function App() {
             <Route path='finding' element={<Finding />} />
             <Route path='org' element={<Org />} />
             <Route path='scan' element={<Scan />} />
+            <Route path='social' element={<Social />} />
           </Route>
         </Routes>
       </BrowserRouter>
