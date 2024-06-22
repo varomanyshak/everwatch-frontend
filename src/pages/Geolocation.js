@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Col, Row} from '@themesberg/react-bootstrap';
+import React, { useState, useEffect} from 'react';
+import { Col, Row } from '@themesberg/react-bootstrap';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 import L from 'leaflet';
 
@@ -12,7 +12,6 @@ const PIcon = L.icon({
 
 const Azure = (props) => {
     const [locations, setlocations] = useState([]);
-
     const getLocations = () => {
         let data = props.Tabledata;
         let tempAry = []
@@ -23,11 +22,13 @@ const Azure = (props) => {
             tempAry.push(josnString)
         }
         setlocations(tempAry)
+        console.log('Geo');
     }
-    useEffect(() => {
+
+    useEffect(()=>{
         getLocations()
-    }, [])
-    
+    },[])
+
     return (
         <>
             <Row>

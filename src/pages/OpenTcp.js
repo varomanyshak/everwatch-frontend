@@ -195,7 +195,7 @@ const OpenTcp = () => {
 export default OpenTcp;
 
 const ChartHostPie = (props) => {
-  const [options, setOptions] = useState({
+  const options = {
     data: props.data,
     title: {
       text: "Host",
@@ -207,7 +207,6 @@ const ChartHostPie = (props) => {
         legendItemKey: "host",
       },
     ],
-  });
-
+  }
   return <AgChartsReact options={options} />;
 };

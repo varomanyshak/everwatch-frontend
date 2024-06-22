@@ -36,7 +36,8 @@ var common = {
             var _source_id = item._source_id;
             var _tags = item._tags;
             var _type = item._type;
-            var ip_address = item._source.match(/\(\"(.*?)\",/)[1];
+            var ip_address = item._source.match(/\((.*?),/)[1];
+            ip_address = ip_address.replaceAll('"',"")
             var module = item._source.match(/module=(.*?),/)[1];
             var tags = item._source.match(/tags=\{(.*?)\}/)[1];
 
@@ -105,18 +106,19 @@ var common = {
                 if (matches && matches.length >= 2) {
                     resolvedHostsPairs = (matches.slice(0, 2));
                 }
-            } else if (resolvedHosts && typeof resolvedHosts === 'object') {
-                let values = Object.values(resolvedHosts);
-                if (values.length >= 2) {
-                    let pair = values.slice(0, 2).map(value => {
-                        if (typeof value === 'string') {
-                            let matches = value.match(/(?:\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b|\b[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}\b)/g);
-                            return matches ? matches[0] : null;
-                        }
-                    });
-                    resolvedHostsPairs = (pair);
-                }
-            }
+            } 
+            // else if (resolvedHosts && typeof resolvedHosts === 'object') {
+            //     let values = Object.values(resolvedHosts);
+            //     if (values.length >= 2) {
+            //         let pair = values.slice(0, 2).map(value => {
+            //             if (typeof value === 'string') {
+            //                 let matches = value.match(/(?:\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b|\b[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}\b)/g);
+            //                 return matches ? matches[0] : null;
+            //             }
+            //         });
+            //         resolvedHostsPairs = (pair);
+            //     }
+            // }
 
             return {
                 confidence,
