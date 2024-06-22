@@ -65,3 +65,20 @@ const portTile = {
   transform: scale(1.5);
   background-color: #2195f363;
 }
+.logo {
+  cursor: pointer;
+  background-color: transparent;
+  transition: 0.3s;
+}
+.logo:hover {
+  background-color: #111;
+}
+
+
+.sc-cfxfcM{
+  background-color: transparent;
+  transition: 0.3s;
+}
+.sc-cfxfcM:hover{
+  background-color: #182230;
+}
