@@ -2,10 +2,7 @@ import React, { useState } from 'react';
 import { Col, Row, } from '@themesberg/react-bootstrap';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { useSelector } from 'react-redux'
-import {
-  useCallback,
-  useMemo,
-} from "react";
+import { useMemo } from "react";
 import { AgGridReact } from "@ag-grid-community/react";
 import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
 import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
@@ -18,7 +15,7 @@ ModuleRegistry.registerModules([ClientSideRowModelModule, RowGroupingModule]);
 const Finding = () => {
   const Tabledata = JSON.parse(useSelector((state) => state.counter.value)).Find;
 
-  function groupByHost(data) {
+  const groupByHost = (data) => {
     const groupedData = {};
     data.forEach(item => {
       const host = item['_BaseEvent__host'];
@@ -64,13 +61,13 @@ const GurlGrid = (props) => {
   const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
   const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
   const [rowData, setRowData] = useState();
-  const [columnDefs, setColumnDefs] = useState([
+  const columnDefs = [
     { field: "_BaseEvent__host", rowGroupIndex: 1, hide: true },
     { field: "_data" },
     { field: "_resolved_hosts" },
     { field: "module" },
     { field: "timestamp" },
-  ]);
+  ]
   const defaultColDef = useMemo(() => {
     return {
       flex: 1,
@@ -83,9 +80,9 @@ const GurlGrid = (props) => {
     };
   }, []);
 
-  const onGridReady = useCallback((params) => {
-    setRowData(props.data);
-  }, []);
+  const onGridReady = () => {
+    setRowData(props.data)
+  }
 
   return (
     <div style={containerStyle}>

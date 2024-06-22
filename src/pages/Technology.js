@@ -3,7 +3,6 @@ import { Col, Row, } from '@themesberg/react-bootstrap';
 import { useSelector, } from 'react-redux'
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import {
-  useCallback,
   useMemo,
 } from "react";
 import { AgGridReact } from "@ag-grid-community/react";
@@ -13,7 +12,6 @@ import { ModuleRegistry } from "@ag-grid-community/core";
 import "@ag-grid-community/styles/ag-grid.css";
 import "@ag-grid-community/styles/ag-theme-quartz.css";
 
-import DetailModal from '../components/DetailModal';
 import common from '../config/common';
 
 ModuleRegistry.registerModules([ClientSideRowModelModule, RowGroupingModule]);
@@ -32,44 +30,6 @@ const Technology = () => {
   }
   const ChartAry = ChangeChartData(common.TechGroupHost(Tech));
   const TableAry = common.ChangeTechTableData(Tech);
-  const [modalShow, setModalShow] = useState(false);
-  const [detailObj, setdetailObj] = useState({
-    confidence: "",
-    id: "",
-    module: "",
-    parsed: "",
-    scan: "",
-    scan_id: "",
-    scans: "",
-    timestamp: "",
-    _BaseEvent__host: "",
-    _BaseEvent__words: "",
-    _data: {
-      asn: "",
-      country: "",
-      description: "",
-      name: "",
-      subnet: ""
-    },
-    _dummy: "",
-    _hash: "",
-    _id: "",
-    _internal: "",
-    _module_priority: "",
-    _port: "",
-    _priority: "",
-    _resolved_hosts: "",
-    _scope_distance: "",
-    _source: {
-      ip_address: "",
-      module: "",
-      tags: ""
-    },
-    _source_id: "",
-    _stats_recorded: "",
-    _tags: "",
-    _type: ""
-  });
 
   return (
     <>
@@ -81,12 +41,6 @@ const Technology = () => {
       <Row style={{height:'700px', marginTop:"30px"}}>
         <TechGrid data = {TableAry}/>
       </Row>
-      <DetailModal
-        show={modalShow}
-        onHide={() => setModalShow(false)}
-        data={detailObj}
-        type='asn'
-      />
     </>
   )
 };
@@ -161,9 +115,9 @@ const TechGrid = (props) => {
     };
   }, []);
 
-  const onGridReady = useCallback((params) => {
-      setRowData(props.data);
-  }, []);
+  const onGridReady = ()=>{
+    setRowData(props.data);
+  }
 
   return (
     <div style={containerStyle}>

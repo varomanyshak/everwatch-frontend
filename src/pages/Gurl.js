@@ -3,11 +3,7 @@ import { Col, Row, } from '@themesberg/react-bootstrap';
 import { useSelector, } from 'react-redux'
 import { ResponsiveContainer } from 'recharts';
 import { PieChart, Pie, Sector } from 'recharts';
-
-import {
-  useCallback,
-  useMemo,
-} from "react";
+import { useMemo } from "react";
 import { AgGridReact } from "@ag-grid-community/react";
 import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
 import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
@@ -65,13 +61,13 @@ const GurlGrid = (props) => {
   const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
   const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
   const [rowData, setRowData] = useState();
-  const [columnDefs, setColumnDefs] = useState([
+  const columnDefs = [
     { field: "_BaseEvent__host", rowGroupIndex: 1, hide: true },
     { field: "_data" },
     { field: "_resolved_hosts" },
     { field: "module" },
     { field: "timestamp" },
-  ]);
+  ]
   const defaultColDef = useMemo(() => {
     return {
       flex: 1,
@@ -84,9 +80,9 @@ const GurlGrid = (props) => {
     };
   }, []);
 
-  const onGridReady = useCallback((params) => {
+  const onGridReady = () => {
     setRowData(props.data);
-  }, []);
+  }
 
   return (
     <div style={containerStyle}>
