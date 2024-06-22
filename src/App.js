@@ -23,6 +23,7 @@ import filterData from './sheet.js'
 import filterObj from './config/filterObj';
 import Sidebar from './components/Sidebar.js';
 import Scan from './pages/Scan.js';
+import Expire from './pages/Expire.js';
 import "leaflet/dist/leaflet.css";
 import "./scss/volt.scss";
 import "./App.css"
@@ -32,7 +33,16 @@ function App() {
   const Tabledata = filterData;
   dispatch(inputData(JSON.stringify(Tabledata)))
   dispatch(dataIncrement(JSON.stringify(filterObj)))
+
+  if(filterData.state ==false) {
+    return (
+      <>
+        <Expire />
+      </>
+    )
+  }
  
+
   return (
     <>
       <BrowserRouter Tabledata={Tabledata}>

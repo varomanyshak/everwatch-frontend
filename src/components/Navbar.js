@@ -49,7 +49,7 @@ export default (props) => {
     height: '90px',
     backgroundColor: '#f5f8fb',
     width: '100%',
-    zIndex: '2000',
+    zIndex: '1000',
     display: 'flex',
     alignItem: 'center',
     marginLeft: '-15px',

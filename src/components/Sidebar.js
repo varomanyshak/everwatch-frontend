@@ -15,13 +15,16 @@ import { inputTitle } from "../features/counter/titleSlice";
 
 export default () => {
   const dispatch = useDispatch()
+  const Reload =()=>{
+    window.location.reload();
+  }
 
   const changeRouter = (value) => {
     dispatch(inputTitle(value))
   }
   return (
     <CDBSidebar style={{}}>
-      <CDBSidebarHeader prefix={<i className="fa fa-bars" />}><div style={{ fontSize: '30px' }}>it tech</div></CDBSidebarHeader>
+      <CDBSidebarHeader prefix={<i className="fa fa-bars" />} className="logo" ><div onClick = {()=>Reload()} style={{ fontSize: '30px' }}>it tech</div></CDBSidebarHeader>
       <CDBSidebarContent style={{ 'flexGrow': '1' }}>
         <CDBSidebarMenu>
           <CDBSidebarMenuItem icon="th-large"><Link to="/" onClick={() => changeRouter('ASN Information')}>ASN Information</Link></CDBSidebarMenuItem>

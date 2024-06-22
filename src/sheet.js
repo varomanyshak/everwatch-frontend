@@ -51,6 +51,7 @@ if (data === undefined) {
     filterData.OpenTcp = []
     filterData.Technology = []
     filterData.Gurl = []
+    filterData.state = false;
 
 } else {
     let ASN = data.filter(item => (item[14] == "ASN"));
