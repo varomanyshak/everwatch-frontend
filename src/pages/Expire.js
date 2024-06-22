@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 const Expire = () => {
     return (
         <>
             <div>
                 <center>
-                    
                     <h1>Token Expired</h1>
                 </center>
             </div>

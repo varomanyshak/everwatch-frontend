@@ -5,7 +5,6 @@ import 'react-vertical-timeline-component/style.min.css';
 const GeneralTimeline = (props) => {
     let totalData1 = Object.values(props.data).flat()
     let totalData = totalData1.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp))
-    // console.log("Total Data", totalData)
     return (
         <div className="timeline-wrapper-d">
             <style>

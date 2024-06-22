@@ -1,9 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { Col, Row, Nav, Card, Image, Button, Table, Dropdown, ProgressBar, ButtonGroup } from '@themesberg/react-bootstrap';
+import React, { useState} from 'react';
+import {Card,  Button,} from '@themesberg/react-bootstrap';
 import { Container } from 'react-bootstrap';
-import { useSelector, useDispatch } from 'react-redux'
-
-import common from '../config/common';
+import { useSelector,  } from 'react-redux'
 import DetailModal from '../components/DetailModal';
 
 const Org = (props) => {
@@ -42,11 +40,7 @@ const Org = (props) => {
         setModalShow(true)
         console.log(list);
     }
-    useEffect(() => {
-        // console.log(props.Tabledata);
-    }, [])
-
-    return (
+     return (
         <>
             <Container style={{
                 'display': 'flex',
@@ -68,13 +62,6 @@ const Org = (props) => {
                 ))}
 
             </Container>
-            {
-                OrgTabledata.length == 0 ? (
-                    <center>
-                        <h3>Token expired</h3>
-                    </center>
-                ) : ('')
-            }
             <DetailModal
                 show={modalShow}
                 onHide={() => setModalShow(false)}

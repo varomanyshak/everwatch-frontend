@@ -1,13 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import { Col, Row, Nav, Card, Image, Button, Table, Dropdown, ProgressBar, ButtonGroup } from '@themesberg/react-bootstrap';
+import React, { useState } from 'react';
+import {  Card,  Button } from '@themesberg/react-bootstrap';
 import { Container } from 'react-bootstrap';
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 
-import common from '../config/common';
 import DetailModal from '../components/DetailModal';
 
 const Scan = (props) => {
-    const OrgTabledata = JSON.parse(useSelector((state) => state.counter.value)).Org
     const ScanTabledata = JSON.parse(useSelector((state) => state.counter.value)).Scan
     const [modalShow, setModalShow] = useState(false);
     const [detailObj, setdetailObj] = useState({
@@ -41,7 +39,6 @@ const Scan = (props) => {
     const listDetail = (list) => {
         setdetailObj(list)
         setModalShow(true)
-        console.log(list);
     }
 
     return (
@@ -66,13 +63,6 @@ const Scan = (props) => {
                 ))}
 
             </Container>
-            {
-                ScanTabledata.length == 0 ? (
-                    <center>
-                        <h3>Token expired</h3>
-                    </center>
-                ) : ('')
-            }
             <DetailModal
                 show={modalShow}
                 onHide={() => setModalShow(false)}

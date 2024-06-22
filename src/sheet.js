@@ -1,5 +1,4 @@
 import axios from "axios";
-import filterTypeStr from "./config/filter";
 import common from "./config/common";
 
 var data;
@@ -42,59 +41,54 @@ const asnData = (ary) => {
 }
 
 if (data === undefined) {
-    filterData.ASN = []
-    filterData.Azure = []
-    filterData.GEOLOCATION = []
-    filterData.CodeRepo = []
-    filterData.DNS = []
-    filterData.EmailAddress = []
-    filterData.OpenTcp = []
-    filterData.Technology = []
-    filterData.Gurl = []
     filterData.state = false;
-
 } else {
-    let ASN = data.filter(item => (item[14] == "ASN"));
+    let ASN = data.filter(item => (item[14] === "ASN"));
     ASN.unshift(data[0]);
     filterData.ASN = common.asnExtractValues((asnData(changeOBJ(ASN))))
-    let Azure = data.filter(item => (item[14] == "AZURE_TENANT"));
+    let Azure = data.filter(item => (item[14] === "AZURE_TENANT"));
     Azure.unshift(data[0]); filterData.Azure = changeOBJ(Azure);
     filterData.Azure = (asnData(changeOBJ(Azure)));
-    let GEOLOCATION = data.filter(item => (item[14] == "GEOLOCATION"))
+    let GEOLOCATION = data.filter(item => (item[14] === "GEOLOCATION"))
     GEOLOCATION.unshift(data[0])
     filterData.GEOLOCATION = changeOBJ(GEOLOCATION);
-    let CodeRepo = data.filter(item => (item[14] == "CODE_REPOSITORY"))
+    let CodeRepo = data.filter(item => (item[14] === "CODE_REPOSITORY"))
     CodeRepo.unshift(data[0])
     filterData.CodeRepo = changeOBJ(CodeRepo);
-    let DNS = data.filter(item => (item[14] == "DNS_NAME"))
+    let DNS = data.filter(item => (item[14] === "DNS_NAME"))
     DNS.unshift(data[0])
     filterData.DNS = changeOBJ(DNS);
-    let EmailAddress = data.filter(item => (item[14] == "EMAIL_ADDRESS"))
+    let EmailAddress = data.filter(item => (item[14] === "EMAIL_ADDRESS"))
     EmailAddress.unshift(data[0])
     filterData.EmailAddress = changeOBJ(EmailAddress);
-    let OpenTcp = data.filter(item => (item[14] == "OPEN_TCP_PORT"))
+    let OpenTcp = data.filter(item => (item[14] === "OPEN_TCP_PORT"))
     OpenTcp.unshift(data[0])
     filterData.OpenTcp = common.TcpPortExtractValues(changeOBJ(OpenTcp))
-    let Technology = data.filter(item => (item[14] == "TECHNOLOGY"))
+    let Technology = data.filter(item => (item[14] === "TECHNOLOGY"))
     Technology.unshift(data[0])
     filterData.Technology = asnData(changeOBJ(Technology))
 
-    let Gurl = data.filter(item => (item[14] == "URL"))
+    let Gurl = data.filter(item => (item[14] === "URL"))
     Gurl.unshift(data[0])
     filterData.Gurl = changeOBJ(Gurl)
 
-    let Find = data.filter(item => (item[14] == "FINDING"))
+    let Find = data.filter(item => (item[14] === "FINDING"))
     Find.unshift(data[0])
     filterData.Find = (changeOBJ(Find))
 
-    let Org = data.filter(item => (item[14] == "ORG_STUB"))
+    let Org = data.filter(item => (item[14] === "ORG_STUB"))
     Org.unshift(data[0])
     filterData.Org = (changeOBJ(Org))
     
-    let Scan = data.filter(item => (item[14] == "SCAN"))
+    let Scan = data.filter(item => (item[14] === "SCAN"))
     Scan.unshift(data[0])
     filterData.Scan = (changeOBJ(Scan))
 
+    let Vul = data.filter(item => (item[14] === "VULNERABILITY"))
+    Vul.unshift(data[0])
+    filterData.Vul = asnData((changeOBJ(Vul)))
+
+    console.log(filterData.Vul);
 }
 
 export default filterData

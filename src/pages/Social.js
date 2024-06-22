@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Col, Row, Nav, Card, Image, Button, Table, Dropdown, ProgressBar, ButtonGroup } from '@themesberg/react-bootstrap';
+import { Card, Button } from '@themesberg/react-bootstrap';
 import { Container } from 'react-bootstrap';
-import { useSelector, useDispatch } from 'react-redux'
-import common from '../config/common';
+import { useSelector } from 'react-redux'
 import DetailModal from '../components/DetailModal';
 const Social = (props) => {
     const OrgTabledata = JSON.parse(useSelector((state) => state.counter.value)).Org
@@ -40,10 +39,7 @@ const Social = (props) => {
         setModalShow(true)
         console.log(list);
     }
-    useEffect(() => {
-        // console.log(props.Tabledata);
-    }, [])
-
+   
     return (
         <>
             <Container style={{
@@ -66,13 +62,6 @@ const Social = (props) => {
                 ))}
 
             </Container>
-            {
-                OrgTabledata.length == 0 ? (
-                    <center>
-                        <h3>Token expired</h3>
-                    </center>
-                ) : ('')
-            }
             <DetailModal
                 show={modalShow}
                 onHide={() => setModalShow(false)}

@@ -1,14 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import { Col, Row, Nav, Card, Image, Button, Table, Dropdown, ProgressBar, ButtonGroup } from '@themesberg/react-bootstrap';
-import { useSelector, useDispatch } from 'react-redux'
+import React, { useState } from 'react';
+import { Col, Row, } from '@themesberg/react-bootstrap';
+import { useSelector, } from 'react-redux'
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import {
   useCallback,
   useMemo,
-  useRef,
-  StrictMode,
 } from "react";
-import { createRoot } from "react-dom/client";
 import { AgGridReact } from "@ag-grid-community/react";
 import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
 import { RowGroupingModule } from "@ag-grid-enterprise/row-grouping";
@@ -18,12 +15,10 @@ import "@ag-grid-community/styles/ag-theme-quartz.css";
 
 import DetailModal from '../components/DetailModal';
 import common from '../config/common';
-import { height } from '@fortawesome/free-solid-svg-icons/fa0';
 
 ModuleRegistry.registerModules([ClientSideRowModelModule, RowGroupingModule]);
 
 const Technology = () => {
-  const Tabledata = JSON.parse(useSelector((state) => state.counter.value)).ASN
   const Tech = JSON.parse(useSelector((state) => state.counter.value)).Technology
   const ChangeChartData = (data) => {
     let ChartAry = [];
@@ -76,11 +71,6 @@ const Technology = () => {
     _type: ""
   });
 
-  const listDetail = (list) => {
-    setdetailObj(list)
-    setModalShow(true)
-  }
-
   return (
     <>
       <Row style={{ height: '500px' }}>
@@ -91,13 +81,6 @@ const Technology = () => {
       <Row style={{height:'700px', marginTop:"30px"}}>
         <TechGrid data = {TableAry}/>
       </Row>
-      {
-        Tabledata.length == 0 ? (
-          <center>
-            <h3>Token expired</h3>
-          </center>
-        ) : ('')
-      }
       <DetailModal
         show={modalShow}
         onHide={() => setModalShow(false)}
@@ -110,27 +93,6 @@ const Technology = () => {
 
 export default Technology;
 
-const getIntroOfPage = (label) => {
-  if (label === 'Page A') {
-    return "Page A is about men's clothingwefwefwe";
-  }
-  if (label === 'Page B') {
-    return "Page B is about women's dress";
-  }
-  if (label === 'Page C') {
-    return "Page C is about women's bag";
-  }
-  if (label === 'Page D') {
-    return 'Page D is about household goods';
-  }
-  if (label === 'Page E') {
-    return 'Page E is about food';
-  }
-  if (label === 'Page F') {
-    return 'Page F is about baby food';
-  }
-  return '';
-};
 const CustomTooltip = ({ active, payload, label }) => {
   if (active && payload && payload.length) {
     return (
@@ -179,14 +141,14 @@ const TechGrid = (props) => {
   const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
   const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
   const [rowData, setRowData] = useState();
-  const [columnDefs, setColumnDefs] = useState([
+  const columnDefs = [
     { field: "host", rowGroupIndex: 1, hide: true },
     { field: "technology"},
     { field: "url" },
     { field: "module" },
     { field: "timestamp" },
-    // { field: "bronze" },
-  ]);
+  ]
+
   const defaultColDef = useMemo(() => {
     return {
       flex: 1,
@@ -201,9 +163,6 @@ const TechGrid = (props) => {
 
   const onGridReady = useCallback((params) => {
       setRowData(props.data);
-    // fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
-    //   .then((resp) => resp.json())
-    //   .then((data) => setRowData(data));
   }, []);
 
   return (

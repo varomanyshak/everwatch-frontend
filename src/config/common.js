@@ -1,5 +1,5 @@
 
-export default {
+var common = {
     newScan: function (scans) {
         let num = 0;
         for (let i = 0; i < scans.length - 1; i++) {
@@ -7,7 +7,7 @@ export default {
                 num = i
             }
         }
-        if (num != 0) { num = scans.length - num + 1 }
+        if (num !== 0) { num = scans.length - num + 1 }
         return num
     },
 
@@ -232,3 +232,5 @@ export default {
     }
 
 }
+
+export default common;
