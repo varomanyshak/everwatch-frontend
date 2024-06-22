@@ -86,9 +86,11 @@ if (data === undefined) {
 
     let Vul = data.filter(item => (item[14] === "VULNERABILITY"))
     Vul.unshift(data[0])
-    filterData.Vul = asnData((changeOBJ(Vul)))
+    filterData.OpenTcp = filterData.OpenTcp.concat(asnData((changeOBJ(Vul))))
 
-    console.log(filterData.Vul);
+    let Social = data.filter(item => (item[14] === "SOCIAL"))
+    Social.unshift(data[0])
+    filterData.Social = asnData(changeOBJ(Social))
 }
 
 export default filterData
