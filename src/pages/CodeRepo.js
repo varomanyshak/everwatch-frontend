@@ -1,15 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import { Col, Row, Nav, Card, Image, Button, Table, Dropdown, ProgressBar, ButtonGroup } from '@themesberg/react-bootstrap';
+import React, { useEffect } from 'react';
+import { Col, Row, Button, Table,  } from '@themesberg/react-bootstrap';
 import {
   DatatableWrapper,
   Filter,
   Pagination,
   PaginationOptions,
   TableBody,
-  TableColumnType,
+
   TableHeader
 } from "react-bs-datatable";
-import common from '../config/common';
 
 const STORY_HEADERS = [
   {
@@ -89,13 +88,6 @@ const CodeRepo = (props) => {
           <TableBody />
         </Table>
       </DatatableWrapper>
-      {
-        props.Tabledata.length == 0 ? (
-          <center>
-            <h3>Token expired</h3>
-          </center>
-        ) : ('')
-      }
     </>
   )
 };

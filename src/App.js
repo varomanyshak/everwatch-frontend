@@ -1,9 +1,6 @@
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux'
-import ReactDOM from 'react-dom';
-import { HashRouter, BrowserRouter, Routes, Route } from "react-router-dom";
-import { Col, Row, Button, Container, Dropdown, ButtonGroup } from '@themesberg/react-bootstrap';
-
+import React from 'react';
+import { useDispatch } from 'react-redux'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { inputData } from './features/counter/counterSlice.js'
 import { dataIncrement } from './features/counter/dataSlice.js';
 
@@ -24,6 +21,7 @@ import filterObj from './config/filterObj';
 import Sidebar from './components/Sidebar.js';
 import Scan from './pages/Scan.js';
 import Expire from './pages/Expire.js';
+
 import "leaflet/dist/leaflet.css";
 import "./scss/volt.scss";
 import "./App.css"
@@ -34,14 +32,14 @@ function App() {
   dispatch(inputData(JSON.stringify(Tabledata)))
   dispatch(dataIncrement(JSON.stringify(filterObj)))
 
-  if(filterData.state ==false) {
+  if (filterData.state === false) {
     return (
       <>
         <Expire />
       </>
     )
   }
- 
+
 
   return (
     <>

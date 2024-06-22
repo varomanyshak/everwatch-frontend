@@ -1,14 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import { Col, Row, Nav, Card, Image, Button, Table, Dropdown, ProgressBar, ButtonGroup } from '@themesberg/react-bootstrap';
-import { useSelector, useDispatch } from 'react-redux'
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import React, { useState } from 'react';
+import { Col, Row, } from '@themesberg/react-bootstrap';
+import { useSelector, } from 'react-redux'
+import { ResponsiveContainer } from 'recharts';
 import { PieChart, Pie, Sector } from 'recharts';
 
 import {
   useCallback,
   useMemo,
-  useRef,
-  StrictMode,
 } from "react";
 import { AgGridReact } from "@ag-grid-community/react";
 import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
@@ -57,13 +55,6 @@ const Gurl = () => {
       <Row style={{ height: '800px', marginTop: "30px" }}>
         <GurlGrid data={TableData} />
       </Row>
-      {
-        TableData.length == 0 ? (
-          <center>
-            <h3>Token expired</h3>
-          </center>
-        ) : ('')
-      }
     </>
   )
 };
@@ -117,14 +108,6 @@ const GurlGrid = (props) => {
     </div>
   );
 };
-
-
-const data = [
-  { name: 'Group A', value: 400 },
-  { name: 'Group B', value: 300 },
-  { name: 'Group C', value: 300 },
-  { name: 'Group D', value: 200 },
-];
 
 const renderActiveShape = (props) => {
   const RADIAN = Math.PI / 180;

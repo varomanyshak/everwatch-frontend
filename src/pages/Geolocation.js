@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Col, Row, Nav, Card, Image, Button, Dropdown, ProgressBar, ButtonGroup } from '@themesberg/react-bootstrap';
-import { MapContainer, TileLayer, useMap, Marker, Popup } from 'react-leaflet'
+import { Col, Row} from '@themesberg/react-bootstrap';
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 import L from 'leaflet';
-import { Table } from 'react-bootstrap';
 
 const PIcon = L.icon({
     iconUrl: 'assets/img/map/marker-icon.png',
@@ -14,10 +13,6 @@ const PIcon = L.icon({
 const Azure = (props) => {
     const [locations, setlocations] = useState([]);
 
-    useEffect(() => {
-        getLocations()
-    }, [])
-
     const getLocations = () => {
         let data = props.Tabledata;
         let tempAry = []
@@ -28,19 +23,11 @@ const Azure = (props) => {
             tempAry.push(josnString)
         }
         setlocations(tempAry)
-
-        tempAry.map(item => {
-            // console.log(JSON.parse(item));
-        })
-
     }
-
-    const cardCOl = {
-        display: ' flex',
-        justifyContent: 'center',
-        alignItems: 'center'
-    }
-
+    useEffect(() => {
+        getLocations()
+    }, [])
+    
     return (
         <>
             <Row>

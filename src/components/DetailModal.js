@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Col, Row, Nav, Card, Image, Button, Table, Dropdown, ProgressBar, ButtonGroup } from '@themesberg/react-bootstrap';
+import React from 'react';
+import { Col, Row, Card, Button } from '@themesberg/react-bootstrap';
 import Modal from 'react-bootstrap/Modal';
 
 const domainspan = {
@@ -19,8 +19,8 @@ const tenantName = {
     "wordBreak": 'break-all'
 }
 
-export default (props) => {
-    if (props.data._type == "OPEN_TCP_PORT") {
+const DetailModal = (props) => {
+    if (props.data._type === "OPEN_TCP_PORT") {
         return (
             <Modal
                 {...props}
@@ -112,7 +112,7 @@ export default (props) => {
             </Modal >
         )
     }
-    if (props.data._type == "ORG_STUB") {
+    if (props.data._type === "ORG_STUB") {
         console.log(props.data);
         return (
             <Modal
@@ -215,7 +215,7 @@ export default (props) => {
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                {props.type == "asn" ? (
+                {props.type === "asn" ? (
                     <Card>
                         <Card.Body>
                             <Card.Title>
@@ -244,7 +244,7 @@ export default (props) => {
                         </Card.Body>
                     </Card>
                 ) : (<>
-                    {props.type == "azure" ? (
+                    {props.type === "azure" ? (
                         <Card>
                             <Card.Body>
                                 <Card.Title>
@@ -355,3 +355,4 @@ export default (props) => {
         </Modal >
     );
 }
+export default DetailModal;

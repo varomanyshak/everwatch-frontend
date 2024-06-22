@@ -1,15 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import { Col, Row, Nav, Card, Image, Button, Table, Dropdown, ProgressBar, ButtonGroup } from '@themesberg/react-bootstrap';
+import React, { useState } from 'react';
+import { Col, Row, Button, Table } from '@themesberg/react-bootstrap';
 import {
   DatatableWrapper,
   Filter,
   Pagination,
   PaginationOptions,
   TableBody,
-  TableColumnType,
   TableHeader
 } from "react-bs-datatable";
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 import DetailModal from '../components/DetailModal';
 
 const Asn = () => {
@@ -145,14 +144,6 @@ const Asn = () => {
           <TableBody />
         </Table>
       </DatatableWrapper>
-      {
-        Tabledata.length == 0 ? (
-          <center>
-            <h3>Token expired</h3>
-          </center>
-        ) : ('')
-      }
-
       <DetailModal
         show={modalShow}
         onHide={() => setModalShow(false)}

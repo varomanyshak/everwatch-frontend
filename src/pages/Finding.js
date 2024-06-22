@@ -1,7 +1,7 @@
-import React, { useState, useEffect, Fragment } from 'react';
-import { Col, Row, Nav, Card, Image, Button, Table, Dropdown, ProgressBar, ButtonGroup } from '@themesberg/react-bootstrap';
+import React, { useState } from 'react';
+import { Col, Row, } from '@themesberg/react-bootstrap';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 import {
   useCallback,
   useMemo,
@@ -70,7 +70,6 @@ const GurlGrid = (props) => {
     { field: "_resolved_hosts" },
     { field: "module" },
     { field: "timestamp" },
-    // { field: "bronze" },
   ]);
   const defaultColDef = useMemo(() => {
     return {
@@ -118,8 +117,6 @@ const CustomTooltip = ({ active, payload, label }) => {
         boxShadow: '0 5px 15px #19223293'
       }}>
         <p className="label">{`${label} : ${payload[0].value}`}</p>
-        {/* <p className="intro">{getIntroOfPage(label)}</p> */}
-        {/* <p className="desc">Anything you want can be displayed here.</p> */}
       </div>
     );
   }

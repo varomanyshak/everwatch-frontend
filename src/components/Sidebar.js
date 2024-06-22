@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { Outlet, Link, NavLink } from "react-router-dom";
-import { useSelector, useDispatch } from 'react-redux'
+import React from "react";
+import {  Link  } from "react-router-dom";
+import { useDispatch } from 'react-redux'
 
 import {
   CDBSidebar,
@@ -8,12 +8,10 @@ import {
   CDBSidebarMenuItem,
   CDBSidebarContent,
   CDBSidebarMenu,
-  CDBSidebarSubMenu,
-  CDBSidebarFooter,
 } from 'cdbreact';
 import { inputTitle } from "../features/counter/titleSlice";
 
-export default () => {
+const Sidebar =  () => {
   const dispatch = useDispatch()
   const Reload =()=>{
     window.location.reload();
@@ -40,7 +38,6 @@ export default () => {
           <CDBSidebarMenuItem icon="th-large">Social Profiles</CDBSidebarMenuItem>
           <CDBSidebarMenuItem icon="th-large">Storage Bucket</CDBSidebarMenuItem>
           <CDBSidebarMenuItem icon="check"><Link to="/technology" onClick={() => changeRouter('Technology')}>Technology</Link></CDBSidebarMenuItem>
-          {/* <CDBSidebarMenuItem icon="th-large">Web Application Firewall (WAF)</CDBSidebarMenuItem> */}
           <CDBSidebarMenuItem icon="th-large">WAF</CDBSidebarMenuItem>
           <CDBSidebarMenuItem icon="check"><Link to="/g-url" onClick={() => changeRouter('General URL')}>General URL</Link></CDBSidebarMenuItem>
         </CDBSidebarMenu>
@@ -48,3 +45,5 @@ export default () => {
     </CDBSidebar>
   );
 };
+
+export default Sidebar
