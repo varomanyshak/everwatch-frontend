@@ -49,7 +49,7 @@ if (data === undefined) {
     filterData.GEOLOCATION = changeOBJ(GEOLOCATION);
     let CodeRepo = data.filter(item => (item[14] === "CODE_REPOSITORY"))
     CodeRepo.unshift(data[0])
-    filterData.CodeRepo = changeOBJ(CodeRepo);
+    filterData.CodeRepo = asnData(changeOBJ(CodeRepo));
     let DNS = data.filter(item => (item[14] === "DNS_NAME"))
     DNS.unshift(data[0])
     filterData.DNS = changeOBJ(DNS);
@@ -74,7 +74,7 @@ if (data === undefined) {
     let Org = data.filter(item => (item[14] === "ORG_STUB"))
     Org.unshift(data[0])
     filterData.Org = (changeOBJ(Org))
-    
+
     let Scan = data.filter(item => (item[14] === "SCAN"))
     Scan.unshift(data[0])
     filterData.Scan = (changeOBJ(Scan))

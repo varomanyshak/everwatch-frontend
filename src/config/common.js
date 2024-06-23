@@ -37,7 +37,7 @@ var common = {
             var _tags = item._tags;
             var _type = item._type;
             var ip_address = item._source.match(/\((.*?),/)[1];
-            ip_address = ip_address.replaceAll('"',"")
+            ip_address = ip_address.replaceAll('"', "")
             var module = item._source.match(/module=(.*?),/)[1];
             var tags = item._source.match(/tags=\{(.*?)\}/)[1];
 
@@ -72,7 +72,6 @@ var common = {
         });
         return result;
     },
-
     TcpPortExtractValues: function (arr) {
         var result = arr.map(item => {
             var confidence = item.confidence;
@@ -106,7 +105,7 @@ var common = {
                 if (matches && matches.length >= 2) {
                     resolvedHostsPairs = (matches.slice(0, 2));
                 }
-            } 
+            }
             // else if (resolvedHosts && typeof resolvedHosts === 'object') {
             //     let values = Object.values(resolvedHosts);
             //     if (values.length >= 2) {
@@ -231,6 +230,11 @@ var common = {
             };
         });
         return result;
+    },
+    extractIPAddress: function (str) {
+        const regex = /\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}/;
+        const ipAddress = str.match(regex)[0];
+        return ipAddress;
     }
 
 }
