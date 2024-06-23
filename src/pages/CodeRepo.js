@@ -40,7 +40,7 @@ const CodeRepo = (props) => {
     _module_priority: "",
     _port: "",
     _priority: "",
-    _resolved_hosts: "0.0.0.0",
+    _resolved_hosts: "",
     _scope_distance: "",
     _source: {
       ip_address: "",

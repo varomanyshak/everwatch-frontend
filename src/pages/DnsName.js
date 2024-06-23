@@ -10,7 +10,7 @@ const DnsName = (props) => {
     const [detailObj, setdetailObj] = useState({
         _BaseEvent__host: "",
         scans: "",
-        _resolved_hosts: "0.0.0.0",
+        _resolved_hosts: "",
         parsed: "",
         _scope_distance: "",
         _dummy: "",
