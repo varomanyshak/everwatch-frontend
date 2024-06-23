@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux'
 import DetailModal from '../components/DetailModal';
 
 const EmailAddress = (props) => {
-    const Tabledata = JSON.parse(useSelector((state) => state.counter.value)).DNS
+    const Tabledata = JSON.parse(useSelector((state) => state.counter.value)).EmailAddress
     const [modalShow, setModalShow] = useState(false);
     const [detailObj, setdetailObj] = useState({
         _BaseEvent__host: "",
