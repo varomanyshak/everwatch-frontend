@@ -20,7 +20,7 @@ const changeOBJ = (ary) => {
     return resData
 }
 
-await axios.get('https://sheets.googleapis.com/v4/spreadsheets/1_GxPa5ZDLRVscL3H0dXysMWRmA95PbOxmfzL2dKeimc/values/sompo_results_sample2', axiosConfig)
+await axios.get(`http://localhost:3001/api`)
     .then(
         (res) => {
             data = changeOBJ(res.data.values)

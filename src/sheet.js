@@ -3,11 +3,6 @@ import filterTypeStr from "./config/filter";
 
 var data;
 var filterData = {};
-const axiosConfig = {
-    headers: {
-        'Authorization': process.env.REACT_APP_ACCESS_TOKEN
-    }
-};
 
 const changeOBJ = (ary) => {
     let resData = [];
@@ -21,10 +16,10 @@ const changeOBJ = (ary) => {
     return resData
 }
 
-await axios.get('https://sheets.googleapis.com/v4/spreadsheets/1_GxPa5ZDLRVscL3H0dXysMWRmA95PbOxmfzL2dKeimc/values/sompo_results_sample2', axiosConfig)
+await axios.get(`http://localhost:3001/api`)
     .then(
         (res) => {
-            data = res.data.values
+            data = res
         })
     .catch(
         (err) => {
