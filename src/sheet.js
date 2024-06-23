@@ -91,6 +91,14 @@ if (data === undefined) {
     let Social = data.filter(item => (item[14] === "SOCIAL"))
     Social.unshift(data[0])
     filterData.Social = asnData(changeOBJ(Social))
+
+    let Storage = data.filter(item => (item[14] === "STORAGE_BUCKET"))
+    Storage.unshift(data[0])
+    filterData.Storage = asnData(changeOBJ(Storage))
+
+    let WAF = data.filter(item => (item[14] === "WAF"))
+    WAF.unshift(data[0])
+    filterData.WAF = asnData(changeOBJ(WAF))
 }
 
 export default filterData
