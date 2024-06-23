@@ -22,6 +22,8 @@ import Sidebar from './components/Sidebar.js';
 import Scan from './pages/Scan.js';
 import Expire from './pages/Expire.js';
 import Social from './pages/Social.js';
+import Storage from './pages/Storage.js';
+import WAF from './pages/WAF.js';
 import "leaflet/dist/leaflet.css";
 import "./scss/volt.scss";
 import "./App.css"
@@ -60,6 +62,8 @@ function App() {
             <Route path='org' element={<Org />} />
             <Route path='scan' element={<Scan />} />
             <Route path='social' element={<Social />} />
+            <Route path='storage' element={<Storage />} />
+            <Route path='WAF' element={<WAF />} />
           </Route>
         </Routes>
       </BrowserRouter>

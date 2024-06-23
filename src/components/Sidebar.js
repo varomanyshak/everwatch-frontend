@@ -36,9 +36,9 @@ const Sidebar =  () => {
           <CDBSidebarMenuItem icon="th-large"><Link to="/org" onClick={() => changeRouter('Organization Indication')}>Organization Indication</Link></CDBSidebarMenuItem>
           <CDBSidebarMenuItem icon="th-large"><Link to="/scan" onClick={() => changeRouter('Scanning Information')}>Scanning Information</Link></CDBSidebarMenuItem>
           <CDBSidebarMenuItem icon="th-large"><Link to="/social" onClick={() => changeRouter('Social Profiles')}>Social Profiles</Link></CDBSidebarMenuItem>
-          <CDBSidebarMenuItem icon="th-large">Storage Bucket</CDBSidebarMenuItem>
+          <CDBSidebarMenuItem icon="th-large"><Link to="/storage" onClick={() => changeRouter('Storage Bucket')}>Storage Bucket</Link></CDBSidebarMenuItem>
           <CDBSidebarMenuItem icon="check"><Link to="/technology" onClick={() => changeRouter('Technology')}>Technology</Link></CDBSidebarMenuItem>
-          <CDBSidebarMenuItem icon="th-large">WAF</CDBSidebarMenuItem>
+          <CDBSidebarMenuItem icon="th-large"><Link to="/WAF" onClick={() => changeRouter('Web Application Firewall')}>WAF</Link></CDBSidebarMenuItem>
           <CDBSidebarMenuItem icon="check"><Link to="/g-url" onClick={() => changeRouter('General URL')}>General URL</Link></CDBSidebarMenuItem>
         </CDBSidebarMenu>
       </CDBSidebarContent>
