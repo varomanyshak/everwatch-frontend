@@ -8,42 +8,42 @@ const DnsName = (props) => {
     const Tabledata = JSON.parse(useSelector((state) => state.counter.value)).DNS
     const [modalShow, setModalShow] = useState(false);
     const [detailObj, setdetailObj] = useState({
+        _BaseEvent__host: "",
+        scans: "",
+        _resolved_hosts: "0.0.0.0",
+        parsed: "",
+        _scope_distance: "",
+        _dummy: "",
+        _BaseEvent__words: "",
+        _priority: "",
+        _internal: "",
+        _id: "",
         confidence: "",
+        _port: "",
         id: "",
         module: "",
-        parsed: "",
-        scan: "",
-        scan_id: "",
-        scans: "",
-        timestamp: "",
-        _BaseEvent__host: "",
-        _BaseEvent__words: "",
-        _data: {
-            domains: [],
-            "tenant-id": "",
-            "tenant-names": []
-        },
-        _dummy: "",
-        _hash: "",
-        _id: "",
-        _internal: "",
-        _module_priority: "",
-        _port: "",
-        _priority: "",
-        _resolved_hosts: "",
-        _scope_distance: "",
-        _source: "",
-        _source_id: "",
+        _type: "",
         _stats_recorded: "",
+        timestamp: "",
+        _source_id: "",
+        _hash: "",
         _tags: "",
-        _type: ""
+        _data: "",
+        _source: "",
+        _module_priority: "",
+        scan_id: "",
+        scan: "",
+        web_spider_distance: "",
+        num_redirects: "",
+        dns_resolve_distance: "",
+        _dns_children: "",
     });
 
     const listDetail = (list) => {
         setdetailObj(list)
         setModalShow(true)
     }
-    
+
     return (
         <>
             <Container style={{
