@@ -1,15 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import { Col, Row, Nav, Card, Image, Button, Table, Dropdown, ProgressBar, ButtonGroup } from '@themesberg/react-bootstrap';
+import React, { useEffect } from 'react';
+import { Col, Row, Button, Table,  } from '@themesberg/react-bootstrap';
 import {
   DatatableWrapper,
   Filter,
   Pagination,
   PaginationOptions,
   TableBody,
-  TableColumnType,
+
   TableHeader
 } from "react-bs-datatable";
-import newScan from '../config/common';
 
 const STORY_HEADERS = [
   {
@@ -49,21 +48,6 @@ const CodeRepo = (props) => {
 
   return (
     <>
-      <Row>
-        <Col className="d-flex justify-content-end">
-          <Card style={{ 'marginTop': '-40px' }}>
-            <Card.Body>
-              <Card.Title>Total : {props.Tabledata.length}</Card.Title>
-              <Card.Text>
-                New : {newScan(props.Tabledata)}
-              </Card.Text>
-            </Card.Body>
-          </Card>
-        </Col>
-        <Col className='d-flex justify-content-center' ><h1>Code Repository</h1></Col>
-        <Col></Col>
-      </Row>
-
       <DatatableWrapper
         body={props.Tabledata}
         headers={STORY_HEADERS}
@@ -104,13 +88,6 @@ const CodeRepo = (props) => {
           <TableBody />
         </Table>
       </DatatableWrapper>
-      {
-        props.Tabledata.length == 0 ? (
-          <center>
-            <h3>Token expired</h3>
-          </center>
-        ) : ('')
-      }
     </>
   )
 };

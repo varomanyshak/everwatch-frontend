@@ -1,27 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { Col, Row, Nav, Card, Image, Button, Table, Dropdown, ProgressBar, ButtonGroup, Poupe, Marker } from '@themesberg/react-bootstrap';
+import React from 'react';
+import {  Card,  Button } from '@themesberg/react-bootstrap';
 import { Container } from 'react-bootstrap';
-import newScan from '../config/common';
 
 const EmailAddress = (props) => {
-
     return (
         <>
-            <Row>
-                <Col className="d-flex justify-content-end">
-                    <Card style={{ 'marginTop': '-40px' }}>
-                        <Card.Body>
-                            <Card.Title>Total : {props.Tabledata.length}</Card.Title>
-                            <Card.Text>
-                                New : {newScan(props.Tabledata)}
-                            </Card.Text>
-                        </Card.Body>
-                    </Card>
-                </Col>
-                <Col className='d-flex justify-content-center' ><h1>Email Address</h1></Col>
-                <Col></Col>
-            </Row>
-
             <Container style={{
                 'display': 'flex',
                 'flexWrap': 'wrap',
@@ -30,7 +13,6 @@ const EmailAddress = (props) => {
             }}>
                 {props.Tabledata.map((item, index) => (
                     <Card style={{ width: '18rem' }} key={index}>
-                        {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
                         <Card.Body>
                             <Card.Title>{item.timestamp}</Card.Title>
                             <Card.Text>
@@ -41,13 +23,6 @@ const EmailAddress = (props) => {
                     </Card>
                 ))}
             </Container>
-            {
-                props.Tabledata.length == 0 ? (
-                    <center>
-                        <h3>Token expired</h3>
-                    </center>
-                ) : ('')
-            }
         </>
     )
 };

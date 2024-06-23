@@ -1,51 +1,46 @@
-import React, { useState } from 'react';
-import {  Card,  Button } from '@themesberg/react-bootstrap';
+import React, { useState} from 'react';
+import {Card,  Button,} from '@themesberg/react-bootstrap';
 import { Container } from 'react-bootstrap';
-import { useSelector } from 'react-redux'  
-
+import { useSelector,  } from 'react-redux'
 import DetailModal from '../components/DetailModal';
 
-const Azure = (props) => {
-    const Tabledata = JSON.parse(useSelector((state) => state.counter.value)).Azure
+const Org = (props) => {
+    const OrgTabledata = JSON.parse(useSelector((state) => state.counter.value)).Org
     const [modalShow, setModalShow] = useState(false);
     const [detailObj, setdetailObj] = useState({
-        confidence: "",
-        id: "",
-        module: "",
-        parsed: "",
-        scan: "",
-        scan_id: "",
-        scans: "",
-        timestamp: "",
-        _BaseEvent__host: "",
-        _BaseEvent__words: "",
-        _data: {
-            domains: [],
-            "tenant-id": "",
-            "tenant-names": []
-        },
-        _dummy: "",
-        _hash: "",
-        _id: "",
-        _internal: "",
-        _module_priority: "",
-        _port: "",
-        _priority: "",
-        _resolved_hosts: "",
-        _scope_distance: "",
-        _source: "",
-        _source_id: "",
-        _stats_recorded: "",
-        _tags: "",
-        _type: ""
+        _BaseEvent__host:"",
+        scans:"",
+        _resolved_hosts:"",
+        parsed:"",
+        _scope_distance:"",
+        _dummy:"",
+        _BaseEvent__words:"",
+        _priority:"",
+        _internal:"",
+        _id:"",
+        confidence:"",
+        _port:"",
+        id:"",
+        module:"",
+        _type:"",
+        _stats_recorded:"",
+        timestamp:"",
+        _source_id:"",
+        _hash:"",
+        _tags:"",
+        _data:"",
+        _source:"",
+        _module_priority:"",
+        scan_id:"",
+        scan:""
     });
 
     const listDetail = (list) => {
         setdetailObj(list)
         setModalShow(true)
+        console.log(list);
     }
-   
-    return (
+     return (
         <>
             <Container style={{
                 'display': 'flex',
@@ -54,10 +49,10 @@ const Azure = (props) => {
                 'marginTop': '10px'
             }}>
 
-                {Tabledata.map((item, index) => (
+                {OrgTabledata.map((item, index) => (
                     <Card style={{ width: '18rem' }} key={index}>
                         <Card.Body>
-                            <Card.Title>{item.timestamp}</Card.Title>
+                            <Card.Title>{item._data}</Card.Title>
                             <Card.Text>
                                 {item._id}
                             </Card.Text>
@@ -71,10 +66,10 @@ const Azure = (props) => {
                 show={modalShow}
                 onHide={() => setModalShow(false)}
                 data={detailObj}
-                type="azure"
+                type="ORG"
             />
         </>
     )
 };
 
-export default Azure;
+export default Org;

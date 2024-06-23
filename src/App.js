@@ -1,9 +1,6 @@
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux'
-import ReactDOM from 'react-dom';
-import { HashRouter, BrowserRouter, Routes, Route } from "react-router-dom";
-import { Col, Row, Button, Container, Dropdown, ButtonGroup } from '@themesberg/react-bootstrap';
-
+import React from 'react';
+import { useDispatch } from 'react-redux'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { inputData } from './features/counter/counterSlice.js'
 import { dataIncrement } from './features/counter/dataSlice.js';
 
@@ -15,10 +12,18 @@ import CodeRepo from './pages/CodeRepo.js';
 import DnsName from './pages/DnsName.js'
 import EmailAddress from './pages/EmailAddress.js';
 import OpenTcp from './pages/OpenTcp.js';
+import Technology from './pages/Technology.js';
+import Gurl from './pages/Gurl.js';
+import Finding from './pages/Finding.js';
+import Org from './pages/Org.js';
 import filterData from './sheet.js'
 import filterObj from './config/filterObj';
 import Sidebar from './components/Sidebar.js';
-
+import Scan from './pages/Scan.js';
+import Expire from './pages/Expire.js';
+import Social from './pages/Social.js';
+import Storage from './pages/Storage.js';
+import WAF from './pages/WAF.js';
 import "leaflet/dist/leaflet.css";
 import "./scss/volt.scss";
 import "./App.css"
@@ -28,7 +33,16 @@ function App() {
   const Tabledata = filterData;
   dispatch(inputData(JSON.stringify(Tabledata)))
   dispatch(dataIncrement(JSON.stringify(filterObj)))
- 
+
+  if (filterData.state === false) {
+    return (
+      <>
+        <Expire />
+      </>
+    )
+  }
+
+
   return (
     <>
       <BrowserRouter Tabledata={Tabledata}>
@@ -41,7 +55,15 @@ function App() {
             <Route path='coderepo' element={<CodeRepo Tabledata={Tabledata.CodeRepo} />} />
             <Route path='dns-name' element={<DnsName Tabledata={Tabledata.DNS} />} />
             <Route path='email-address' element={<EmailAddress Tabledata={Tabledata.EmailAddress} />} />
+            <Route path='g-url' element={<Gurl />} />
             <Route path='open-tcp' element={<OpenTcp />} />
+            <Route path='technology' element={<Technology />} />
+            <Route path='finding' element={<Finding />} />
+            <Route path='org' element={<Org />} />
+            <Route path='scan' element={<Scan />} />
+            <Route path='social' element={<Social />} />
+            <Route path='storage' element={<Storage />} />
+            <Route path='WAF' element={<WAF />} />
           </Route>
         </Routes>
       </BrowserRouter>

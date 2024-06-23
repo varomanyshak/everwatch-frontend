@@ -1,23 +1,19 @@
-import React, { useState, useEffect, Fragment } from 'react';
-import { Col, Row, Nav, Card, Image, Button, Table, Dropdown, ProgressBar, ButtonGroup } from '@themesberg/react-bootstrap';
+import React, { useState } from 'react';
+import { Col, Row, Button, Table } from '@themesberg/react-bootstrap';
 import {
   DatatableWrapper,
   Filter,
   Pagination,
   PaginationOptions,
   TableBody,
-  TableColumnType,
   TableHeader
 } from "react-bs-datatable";
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { AgChartsReact } from "ag-charts-react";
-import deepClone from "deepclone";
-import newScan from '../config/common';
 import DetailModal from '../components/DetailModal';
 
 const OpenTcp = () => {
   const Tabledata = JSON.parse(useSelector((state) => state.counter.value)).OpenTcp
-  console.log(Tabledata[0]);
   const [modalShow, setModalShow] = useState(false);
   const [detailObj, setdetailObj] = useState({
     confidence: "",
@@ -81,7 +77,6 @@ const OpenTcp = () => {
   const hostData = printHostOccurrences(Tabledata, "_BaseEvent__host")
   const portData = printHostOccurrences(Tabledata, "_port")
   const portBodyStyle = {
-    // minHeight: '500px',
     gap: '10px',
     backgroundColor: '#192232',
     border: '2px solid #344054',
@@ -92,21 +87,25 @@ const OpenTcp = () => {
     margin: '0'
   }
 
-
   const STORY_HEADERS = [
-    
     {
-      prop: "module",
-      title: "Module",
+      prop: "_BaseEvent__host",
+      title: "Host",
       isSortable: true
     },
     {
-      prop: "_data",
-      title: "URL"
+      prop: "_port",
+      title: "Port",
+      isSortable: true
     },
     {
-      prop: "_stats_recorded",
-      title: "Last Update"
+      prop: "",
+      title: "IP address",
+      cell: (row) => {
+        var host_str = `${row._resolved_hosts[0]}, ${row._resolved_hosts[1]}`
+        return (host_str)
+      },
+      isSortable: true
     },
     {
       prop: "timestamp",
@@ -119,6 +118,7 @@ const OpenTcp = () => {
         <Button
           variant="outline-primary"
           size="sm"
+          onClick={() => listDetail(row)}
         >
           Detail
         </Button>
@@ -128,22 +128,16 @@ const OpenTcp = () => {
 
   return (
     <>
-      {/* <Row style={{ height: '500px' }}>
-        <ChartExample data={portData} />
-      </Row> */}
       <Row style={portBodyStyle}>
         <h3 style={{ color: "white", marginBottom: '0' }}>Tcp Port</h3>
         <hr style={{ color: 'white' }} />
         {portData.map((item, index) => (
-          <div id={item.count} className='portTile'>{item.host}</div>
+          <div id={item.count} key={index} className='portTile'>{item.host}</div>
         ))}
       </Row>
       <Row style={{ height: '500px' }}>
-        <Col>
-          <ChartExample2 data={hostData} />
-        </Col>
-        <Col>
-          <ChartExamplePie data={hostData} />
+        <Col style={{ margin: '20px 0' }}>
+          <ChartHostPie data={hostData} />
         </Col>
       </Row>
       <Row className='p-5'>
@@ -153,7 +147,7 @@ const OpenTcp = () => {
           paginationOptionsProps={{
             initialState: {
               rowsPerPage: 10,
-              options: [5, 10, 15, 20]
+              options: [5, 10, 15, 20, 50, 100]
             }
           }}
         >
@@ -188,14 +182,6 @@ const OpenTcp = () => {
           </Table>
         </DatatableWrapper>
       </Row>
-      {
-        Tabledata.length == 0 ? (
-          <center>
-            <h3>Token expired</h3>
-          </center>
-        ) : ('')
-      }
-
       <DetailModal
         show={modalShow}
         onHide={() => setModalShow(false)}
@@ -208,135 +194,11 @@ const OpenTcp = () => {
 
 export default OpenTcp;
 
-
-function getDataPie() {
-  return [
-    { asset: "Stocks", amount: 60000 },
-    { asset: "Bonds", amount: 40000 },
-    { asset: "Cash", amount: 7000 },
-    { asset: "Real Estate", amount: 5000 },
-    { asset: "Commodities", amount: 3000 },
-  ];
-}
-function getData() {
-  return [
-    {
-      quarter: "Q1'18",
-      iphone: 140,
-      mac: 16,
-      ipad: 14,
-      wearables: 12,
-      services: 20,
-    },
-    {
-      quarter: "Q2'18",
-      iphone: 124,
-      mac: 20,
-      ipad: 14,
-      wearables: 12,
-      services: 30,
-    },
-    {
-      quarter: "Q3'18",
-      iphone: 112,
-      mac: 20,
-      ipad: 18,
-      wearables: 14,
-      services: 36,
-    },
-    {
-      quarter: "Q4'18",
-      iphone: 118,
-      mac: 24,
-      ipad: 14,
-      wearables: 14,
-      services: 36,
-    },
-    {
-      quarter: "Q1'19",
-      iphone: 124,
-      mac: 18,
-      ipad: 16,
-      wearables: 18,
-      services: 26,
-    },
-    {
-      quarter: "Q2'19",
-      iphone: 108,
-      mac: 20,
-      ipad: 16,
-      wearables: 18,
-      services: 40,
-    },
-    {
-      quarter: "Q3'19",
-      iphone: 96,
-      mac: 22,
-      ipad: 18,
-      wearables: 24,
-      services: 42,
-    },
-    {
-      quarter: "Q4'19",
-      iphone: 104,
-      mac: 22,
-      ipad: 14,
-      wearables: 20,
-      services: 40,
-    },
-  ];
-}
-
-const ChartExample = (props) => {
-  const [options, setOptions] = useState({
-    title: {
-      text: "TCP_Port",
-    },
-    // subtitle: {
-    //   // text: "In Billion U.S. Dollars",
-    // },
-    data: props.data,
-    series: [
-      {
-        type: "bar",
-        xKey: "host",
-        yKey: "count",
-        yName: "count",
-        stacked: true,
-      },
-
-    ],
-  });
-
-  return <AgChartsReact options={options} />;
-};
-const ChartExample2 = (props) => {
-  const [options, setOptions] = useState({
-    title: {
-      text: "host",
-    },
-    // subtitle: {
-    //   text: "In Billion U.S. Dollars",
-    // },
-    data: props.data,
-    series: [
-      {
-        type: "bar",
-        direction: "horizontal",
-        xKey: "host",
-        yKey: "count",
-        yName: "count",
-      },
-    ],
-  });
-
-  return <AgChartsReact options={options} />;
-};
-const ChartExamplePie = (props) => {
-  const [options, setOptions] = useState({
+const ChartHostPie = (props) => {
+  const options = {
     data: props.data,
     title: {
-      text: "Portfolio Composition",
+      text: "Host",
     },
     series: [
       {
@@ -345,7 +207,6 @@ const ChartExamplePie = (props) => {
         legendItemKey: "host",
       },
     ],
-  });
-
+  }
   return <AgChartsReact options={options} />;
 };

@@ -1,21 +1,18 @@
-import React, { useState, useEffect } from 'react';
-import { Col, Row, Nav, Card, Image, Button, Table, Dropdown, ProgressBar, ButtonGroup } from '@themesberg/react-bootstrap';
+import React, { useState } from 'react';
+import { Col, Row, Button, Table } from '@themesberg/react-bootstrap';
 import {
   DatatableWrapper,
   Filter,
   Pagination,
   PaginationOptions,
   TableBody,
-  TableColumnType,
   TableHeader
 } from "react-bs-datatable";
-import { useSelector, useDispatch } from 'react-redux'  
-import newScan from '../config/common';
+import { useSelector } from 'react-redux'
 import DetailModal from '../components/DetailModal';
 
 const Asn = () => {
   const Tabledata = JSON.parse(useSelector((state) => state.counter.value)).ASN
-  console.log(Tabledata[0]);
   const [modalShow, setModalShow] = useState(false);
   const [detailObj, setdetailObj] = useState({
     confidence: "",
@@ -44,7 +41,11 @@ const Asn = () => {
     _priority: "",
     _resolved_hosts: "",
     _scope_distance: "",
-    _source: "",
+    _source: {
+      ip_address:"",
+      module:"",
+      tags:""
+    },
     _source_id: "",
     _stats_recorded: "",
     _tags: "",
@@ -73,31 +74,14 @@ const Asn = () => {
       isSortable: true
     },
     {
-      prop: "module",
-      title: "Module",
+      prop: "_source.ip_address",
+      title: "IP address",
       isSortable: true
     },
-    // {
-    //   prop: "",
-    //   title: "Data",
-    //   cell: (row) => (
-    //     <>
-    //       <Card className='Asn-card' onClick={() => listDetail(row)}>
-    //         <Card.Body className='p-2' >
-    //           <Card.Title style={{ fontSize: '13px' }}>Country : {row._data.country}</Card.Title>
-    //           <Card.Text style={{ fontSize: '12px' }}>
-    //             {row._data.name}<br />
-    //             {row._data.subnet}
-    //             {row._data.subnet}
-    //           </Card.Text>
-    //         </Card.Body>
-    //       </Card>
-    //     </>
-    //   )
-    // },
     {
-      prop: "_source",
-      title: "IP Address, Module, Tag"
+      prop: "_source.module",
+      title: "Module",
+      isSortable: true
     },
     {
       prop: "timestamp",
@@ -110,7 +94,7 @@ const Asn = () => {
         <Button
           variant="outline-primary"
           size="sm"
-          onClick={() => listDetail(row)}
+          onClick={() => {listDetail(row)}}
         >
           Detail
         </Button>
@@ -160,19 +144,11 @@ const Asn = () => {
           <TableBody />
         </Table>
       </DatatableWrapper>
-      {
-        Tabledata.length == 0 ? (
-          <center>
-            <h3>Token expired</h3>
-          </center>
-        ) : ('')
-      }
-
       <DetailModal
         show={modalShow}
         onHide={() => setModalShow(false)}
         data={detailObj}
-        type = 'asn'
+        type='asn'
       />
     </>
   )
