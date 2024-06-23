@@ -1,10 +1,5 @@
 import axios from "axios";
 var data;
-const axiosConfig = {
-    headers: {
-        'Authorization': process.env.REACT_APP_ACCESS_TOKEN
-    }
-};
 
 const changeOBJ = (ary) => {
     let resData = [];
@@ -21,7 +16,7 @@ const changeOBJ = (ary) => {
 await axios.get(`http://localhost:3001/api`)
     .then(
         (res) => {
-            data = changeOBJ(res.data.values)
+            data = changeOBJ(res.data)
         })
     .catch(
         (err) => {

@@ -19,7 +19,7 @@ const changeOBJ = (ary) => {
 await axios.get(`http://localhost:3001/api`)
     .then(
         (res) => {
-            data = res
+            data = res.data
         })
     .catch(
         (err) => {
