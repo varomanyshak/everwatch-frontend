@@ -232,6 +232,7 @@ var common = {
         return result;
     },
     extractIPAddress: function (str) {
+        if (str === "" || str === undefined) return;
         const regex = /\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}/;
         const ipAddress = str.match(regex)[0];
         return ipAddress;

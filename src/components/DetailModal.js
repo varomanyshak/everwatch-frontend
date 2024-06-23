@@ -292,7 +292,7 @@ const DetailModal = (props) => {
             </Modal >
         );
     }
-    if (props.type === 'dns') {
+    if (props.type === 'dns' || props.type === 'Eaddress') {
         return (
             <Modal
                 {...props}
