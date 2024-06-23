@@ -70,3 +70,21 @@
   border: 1px solid #eeeeee80;
   transform: scale(1.05);
 }
+
+.categorybtn>li {
+  background-color: transparent;
+  transition: 0.3s;
+  border: 1px solid transparent;
+  border-radius: 30px;
+}
+
+.categorybtn:hover>li,
+.active-category>li {
+  background-color: #182230;
+  border: 1px solid #eeeeee80;
+  transform: scale(1.05);
+}
+
+.recharts-xAxis>g {
+  display: none;
+}
