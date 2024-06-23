@@ -11,7 +11,7 @@ const WAF = (props) => {
                 {Tabledata.map((item, index) => (
                     <Accordion.Item eventKey={index}>
                         <Accordion.Header>{item._data.host}</Accordion.Header>
-                        <Accordion.Body>
+                        <Accordion.Body style={{background:'#e3e4e5'}}>
                             <p>_id : {item._id}</p>
                             <p>_BaseEvent__host : {item._BaseEvent__host}</p>
                             <p>scans : {item.scans}</p>
