@@ -27,6 +27,7 @@ import WAF from './pages/WAF.js';
 import "leaflet/dist/leaflet.css";
 import "./scss/volt.scss";
 import "./App.css"
+import Dashboard from './pages/Dashboard.js';
 
 function App() {
   const dispatch = useDispatch()
@@ -64,6 +65,7 @@ function App() {
             <Route path='social' element={<Social />} />
             <Route path='storage' element={<Storage />} />
             <Route path='WAF' element={<WAF />} />
+            <Route path='dashboard' element={<Dashboard />} />
           </Route>
         </Routes>
       </BrowserRouter>
