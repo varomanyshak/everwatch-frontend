@@ -28,10 +28,14 @@ await axios.get(`http://localhost:3001/api`)
 
 const asnData = (ary) => {
     for (let i = 0; i < ary.length; i++) {
-        let str = ary[i]._data;
-        let jsonStr = str.replaceAll("'", '"');
-        jsonStr = jsonStr.replaceAll("False", false);
-        ary[i]._data = JSON.parse(jsonStr);
+        if (ary[i]._type === "FINDING") {
+            ary[i]._data = common.getFrom_dataFinding(ary[i]._data)
+        } else {
+            let str = ary[i]._data;
+            let jsonStr = str.replaceAll("'", '"');
+            jsonStr = jsonStr.replaceAll("False", false);
+            ary[i]._data = JSON.parse(jsonStr);
+        }
     }
     return ary
 }
@@ -70,7 +74,7 @@ if (data === undefined) {
 
     let Find = data.filter(item => (item[14] === "FINDING"))
     Find.unshift(data[0])
-    filterData.Find = (changeOBJ(Find))
+    filterData.Find = asnData(changeOBJ(Find))
 
     let Org = data.filter(item => (item[14] === "ORG_STUB"))
     Org.unshift(data[0])

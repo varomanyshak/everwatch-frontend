@@ -14,7 +14,7 @@ ModuleRegistry.registerModules([ClientSideRowModelModule, RowGroupingModule]);
 
 const Finding = () => {
   const Tabledata = JSON.parse(useSelector((state) => state.counter.value)).Find;
-
+  console.log(Tabledata);
   const groupByHost = (data) => {
     const groupedData = {};
     data.forEach(item => {
@@ -39,7 +39,6 @@ const Finding = () => {
     return PieAry
   }
   const PieData = PieAry(groupByHost(Tabledata));
-
   return (
     <>
       <Row style={{ height: '500px' }}>

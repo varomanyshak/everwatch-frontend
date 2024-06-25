@@ -251,6 +251,27 @@ var common = {
         var module = str.match(/module=(.*?),/)[1];
         var tags = str.match(/tags=\{(.*?)\}/)[1];
         return { ip_address, module, tags }
+    },
+    getFrom_dataFinding: function (Dstr) {
+        var str = Dstr.replace(/'/g, '"')
+        const startIndex = str.indexOf('"description":');
+        const endIndex = str.indexOf('"url"');
+        if (startIndex !== -1 && endIndex !== -1) {
+            const beforeDescription = str.substring(0, startIndex);
+            const afterUrl = str.substring(endIndex);
+            var description = str.substring(startIndex, endIndex).replace(/"/g, '').split(':');
+            console.log(description);
+            
+            var eraseStr = JSON.parse(beforeDescription + afterUrl);
+            var Ndescription =description[2]
+            return {
+                host: eraseStr.host,
+                url: eraseStr.url,
+                description: Ndescription
+            }
+        } else {
+            return { host: '', url: '', description: '' }
+        }
     }
 }
 

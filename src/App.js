@@ -53,8 +53,8 @@ function App() {
             <Route index element={<Asn />} />
             <Route path='azure' element={<Azure />} />
             <Route path='geolocation' element={<Geolocation />} />
-            <Route path='coderepo' element={<CodeRepo Tabledata={Tabledata.CodeRepo} />} />
-            <Route path='dns-name' element={<DnsName Tabledata={Tabledata.DNS} />} />
+            <Route path='coderepo' element={<CodeRepo />} />
+            <Route path='dns-name' element={<DnsName />} />
             <Route path='email-address' element={<EmailAddress Tabledata={Tabledata.EmailAddress} />} />
             <Route path='g-url' element={<Gurl />} />
             <Route path='open-tcp' element={<OpenTcp />} />
