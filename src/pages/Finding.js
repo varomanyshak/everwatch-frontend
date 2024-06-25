@@ -14,7 +14,6 @@ ModuleRegistry.registerModules([ClientSideRowModelModule, RowGroupingModule]);
 
 const Finding = () => {
   const Tabledata = JSON.parse(useSelector((state) => state.counter.value)).Find;
-  console.log(Tabledata);
   const groupByHost = (data) => {
     const groupedData = {};
     data.forEach(item => {
@@ -62,7 +61,9 @@ const GurlGrid = (props) => {
   const [rowData, setRowData] = useState();
   const columnDefs = [
     { field: "_BaseEvent__host", rowGroupIndex: 1, hide: true },
-    { field: "_data" },
+    { field: "_data.host" },
+    { field: "_data.url" },
+    { field: "_data.description" },
     { field: "_resolved_hosts" },
     { field: "module" },
     { field: "timestamp" },
