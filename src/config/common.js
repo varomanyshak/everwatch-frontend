@@ -236,8 +236,15 @@ var common = {
         const regex = /\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}/;
         const ipAddress = str.match(regex)[0];
         return ipAddress;
-    }
-
+    },
+    getStringWithoutBraces: function (str) {
+        return str.replace(/[{''}]/g, "");
+    },
+    getIDFromString: function (str) {
+        var parts = str.split(':');
+        var id = parts[1];
+        return id;
+    },
 }
 
 export default common;
