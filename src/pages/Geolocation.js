@@ -13,7 +13,6 @@ const PIcon = L.icon({
 
 const Azure = (props) => {
     const GeoTabledata = JSON.parse(useSelector((state) => state.counter.value)).GEOLOCATION
-    console.log(GeoTabledata);
     return (
         <>
             <Row>

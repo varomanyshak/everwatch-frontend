@@ -58,138 +58,139 @@ const OpenTcp = () => {
     const hostOccurrences = array.reduce((acc, item) => {
       acc[item[type]] = (acc[item[type]] || 0) + 1;
       return acc;
-    }, {});
+    }, {})
 
     let HostAry = []
     for (const host in hostOccurrences) {
       // console.log(`Host: ${host}, Occurrences: ${hostOccurrences[host]}`);
-      HostAry.push({
-        host: host,
-        count: hostOccurrences[host]
+      if (host !== "None") {
+        HostAry.push({
+          host: host,
+          count: hostOccurrences[host]
+        })
         // quarter: "Q2'19",
         // iphone: 108,
-      })
+      }
 
     }
-    // console.log(HostAry);
-    return HostAry;
+return HostAry;
   }
-  const hostData = printHostOccurrences(Tabledata, "_BaseEvent__host")
-  const portData = printHostOccurrences(Tabledata, "_port")
-  const portBodyStyle = {
-    gap: '10px',
-    backgroundColor: '#192232',
-    border: '2px solid #344054',
-    borderRadius: '5px',
-    padding: '20px',
-    display: 'flex',
-    flesWrap: 'wrap',
-    margin: '0'
+const hostData = printHostOccurrences(Tabledata, "_BaseEvent__host")
+const portData = printHostOccurrences(Tabledata, "_port")
+const portBodyStyle = {
+  gap: '10px',
+  backgroundColor: '#192232',
+  border: '2px solid #344054',
+  borderRadius: '5px',
+  padding: '20px',
+  display: 'flex',
+  flesWrap: 'wrap',
+  margin: '0'
+}
+
+const STORY_HEADERS = [
+  {
+    prop: "_BaseEvent__host",
+    title: "Host",
+    isSortable: true
+  },
+  {
+    prop: "_port",
+    title: "Port",
+    isSortable: true
+  },
+  {
+    prop: "",
+    title: "IP address",
+    cell: (row) => {
+      var host_str = `${row._resolved_hosts[0]}, ${row._resolved_hosts[1]}`
+      return (host_str)
+    },
+    isSortable: true
+  },
+  {
+    prop: "timestamp",
+    title: "Time",
+    isSortable: true
+  },
+  {
+    prop: "button",
+    cell: (row) => (
+      <Button
+        variant="outline-primary"
+        size="sm"
+        onClick={() => listDetail(row)}
+      >
+        Detail
+      </Button>
+    )
   }
+];
 
-  const STORY_HEADERS = [
-    {
-      prop: "_BaseEvent__host",
-      title: "Host",
-      isSortable: true
-    },
-    {
-      prop: "_port",
-      title: "Port",
-      isSortable: true
-    },
-    {
-      prop: "",
-      title: "IP address",
-      cell: (row) => {
-        var host_str = `${row._resolved_hosts[0]}, ${row._resolved_hosts[1]}`
-        return (host_str)
-      },
-      isSortable: true
-    },
-    {
-      prop: "timestamp",
-      title: "Time",
-      isSortable: true
-    },
-    {
-      prop: "button",
-      cell: (row) => (
-        <Button
-          variant="outline-primary"
-          size="sm"
-          onClick={() => listDetail(row)}
-        >
-          Detail
-        </Button>
-      )
-    }
-  ];
-
-  return (
-    <>
-      <Row style={portBodyStyle}>
-        <h3 style={{ color: "white", marginBottom: '0' }}>Tcp Port</h3>
-        <hr style={{ color: 'white' }} />
-        {portData.map((item, index) => (
-          <div id={item.count} key={index} className='portTile'>{item.host}</div>
-        ))}
-      </Row>
-      <Row style={{ height: '500px' }}>
-        <Col style={{ margin: '20px 0' }}>
-          <ChartHostPie data={hostData} />
-        </Col>
-      </Row>
-      <Row className='p-5'>
-        <DatatableWrapper
-          body={Tabledata}
-          headers={STORY_HEADERS}
-          paginationOptionsProps={{
-            initialState: {
-              rowsPerPage: 10,
-              options: [5, 10, 15, 20, 50, 100]
-            }
-          }}
-        >
-          <Row className="mb-4 p-2">
-            <Col
-              xs={12}
-              lg={4}
-              className="d-flex flex-col justify-content-end align-items-end"
-            >
-              <Filter />
-            </Col>
-            <Col
-              xs={12}
-              sm={6}
-              lg={4}
-              className="d-flex flex-col justify-content-lg-center align-items-center justify-content-sm-start mb-2 mb-sm-0"
-            >
-              <PaginationOptions />
-            </Col>
-            <Col
-              xs={12}
-              sm={6}
-              lg={4}
-              className="d-flex flex-col justify-content-end align-items-end"
-            >
-              <Pagination />
-            </Col>
-          </Row>
-          <Table>
-            <TableHeader />
-            <TableBody />
-          </Table>
-        </DatatableWrapper>
-      </Row>
-      <DetailModal
-        show={modalShow}
-        onHide={() => setModalShow(false)}
-        data={detailObj}
-        type='asn'
-      />
-    </>
-  )
+return (
+  <>
+    <Row style={portBodyStyle}>
+      <h3 style={{ color: "white", marginBottom: '0' }}>Tcp Port</h3>
+      <hr style={{ color: 'white' }} />
+      {portData.map((item, index) => (
+        <div id={item.count} key={index} className='portTile'>{item.host}</div>
+      ))}
+    </Row>
+    <Row style={{ height: '500px' }}>
+      <Col style={{ margin: '20px 0' }}>
+        <ChartHostPie data={hostData} />
+      </Col>
+    </Row>
+    <Row className='p-5'>
+      <DatatableWrapper
+        body={Tabledata}
+        headers={STORY_HEADERS}
+        paginationOptionsProps={{
+          initialState: {
+            rowsPerPage: 10,
+            options: [5, 10, 15, 20, 50, 100]
+          }
+        }}
+      >
+        <Row className="mb-4 p-2">
+          <Col
+            xs={12}
+            lg={4}
+            className="d-flex flex-col justify-content-end align-items-end"
+          >
+            <Filter />
+          </Col>
+          <Col
+            xs={12}
+            sm={6}
+            lg={4}
+            className="d-flex flex-col justify-content-lg-center align-items-center justify-content-sm-start mb-2 mb-sm-0"
+          >
+            <PaginationOptions />
+          </Col>
+          <Col
+            xs={12}
+            sm={6}
+            lg={4}
+            className="d-flex flex-col justify-content-end align-items-end"
+          >
+            <Pagination />
+          </Col>
+        </Row>
+        <Table>
+          <TableHeader />
+          <TableBody />
+        </Table>
+      </DatatableWrapper>
+    </Row>
+    <DetailModal
+      show={modalShow}
+      onHide={() => setModalShow(false)}
+      data={detailObj}
+      type='asn'
+    />
+  </>
+)
 };
 
 export default OpenTcp;
