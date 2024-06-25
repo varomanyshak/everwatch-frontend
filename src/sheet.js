@@ -29,7 +29,8 @@ await axios.get(`http://localhost:3001/api`)
 const asnData = (ary) => {
     for (let i = 0; i < ary.length; i++) {
         let str = ary[i]._data;
-        let jsonStr = str.replaceAll("'", '"')
+        let jsonStr = str.replaceAll("'", '"');
+        jsonStr = jsonStr.replaceAll("False", false);
         ary[i]._data = JSON.parse(jsonStr);
     }
     return ary
@@ -46,7 +47,7 @@ if (data === undefined) {
     filterData.Azure = (asnData(changeOBJ(Azure)));
     let GEOLOCATION = data.filter(item => (item[14] === "GEOLOCATION"))
     GEOLOCATION.unshift(data[0])
-    filterData.GEOLOCATION = changeOBJ(GEOLOCATION);
+    filterData.GEOLOCATION = asnData(changeOBJ(GEOLOCATION));
     let CodeRepo = data.filter(item => (item[14] === "CODE_REPOSITORY"))
     CodeRepo.unshift(data[0])
     filterData.CodeRepo = asnData(changeOBJ(CodeRepo));
