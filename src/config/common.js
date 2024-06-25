@@ -245,6 +245,13 @@ var common = {
         var id = parts[1];
         return id;
     },
+    getDataFrom_source: function (str) {
+        var ip_address = str.match(/\((.*?),/)[1];
+        ip_address = ip_address.replaceAll('"', "")
+        var module = str.match(/module=(.*?),/)[1];
+        var tags = str.match(/tags=\{(.*?)\}/)[1];
+        return { ip_address, module, tags }
+    }
 }
 
 export default common;

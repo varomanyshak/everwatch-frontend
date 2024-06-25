@@ -51,8 +51,8 @@ function App() {
         <Routes Tabledata={Tabledata}>
           <Route path="/" element={<Layout Tabledata={Tabledata} />}>
             <Route index element={<Asn />} />
-            <Route path='azure' element={<Azure Tabledata={Tabledata.Azure} />} />
-            <Route path='geolocation' element={<Geolocation Tabledata={Tabledata.GEOLOCATION} />} />
+            <Route path='azure' element={<Azure />} />
+            <Route path='geolocation' element={<Geolocation />} />
             <Route path='coderepo' element={<CodeRepo Tabledata={Tabledata.CodeRepo} />} />
             <Route path='dns-name' element={<DnsName Tabledata={Tabledata.DNS} />} />
             <Route path='email-address' element={<EmailAddress Tabledata={Tabledata.EmailAddress} />} />

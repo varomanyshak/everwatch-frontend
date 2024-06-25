@@ -2,6 +2,7 @@ import React from 'react';
 import { Col, Row } from '@themesberg/react-bootstrap';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 import L from 'leaflet';
+import { useSelector } from 'react-redux'  
 
 const PIcon = L.icon({
     iconUrl: 'assets/img/map/marker-icon.png',
@@ -11,19 +12,8 @@ const PIcon = L.icon({
 });
 
 const Azure = (props) => {
-    const getLocations = () => {
-        let data = props.Tabledata;
-        let tempAry = []
-        for (let i = 0; i < data.length; i++) {
-            let temp = data[i]._data
-            let josnString = temp.replaceAll("'", '"');
-            josnString = josnString.replaceAll("False", false)
-            tempAry.push(josnString)
-        }
-        return tempAry;
-    }
-    const locations = getLocations()
-
+    const GeoTabledata = JSON.parse(useSelector((state) => state.counter.value)).GEOLOCATION
+    console.log(GeoTabledata);
     return (
         <>
             <Row>
@@ -39,12 +29,11 @@ const Azure = (props) => {
                                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                             />
                             {
-                                locations.map((item, index) => {
-                                    let position = JSON.parse(item)
+                                GeoTabledata.map((item, index) => {
                                     return (
-                                        <Marker position={[position.latitude, position.longitude]} icon={PIcon} key={index}>
+                                        <Marker position={[item._data.latitude, item._data.longitude]} icon={PIcon} key={index}>
                                             <Popup>
-                                                {`Country: ${position.country_name},  City : ${position.city_name},  IP: ${position.ip}`}
+                                                {`Country: ${item._data.country_name},  City : ${item._data.city_name},  IP: ${item._data.ip}`}
                                             </Popup>
                                         </Marker>
                                     )
