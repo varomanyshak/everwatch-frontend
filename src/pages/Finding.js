@@ -38,6 +38,10 @@ const Finding = () => {
     return PieAry
   }
   const PieData = PieAry(groupByHost(Tabledata));
+
+
+
+  
   return (
     <>
       <Row style={{ height: '500px' }}>
