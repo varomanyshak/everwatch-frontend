@@ -50,7 +50,8 @@ function App() {
         <Sidebar />
         <Routes Tabledata={Tabledata}>
           <Route path="/" element={<Layout Tabledata={Tabledata} />}>
-            <Route index element={<Asn />} />
+            <Route index element={<Dashboard />} />
+            <Route path='asn' element={<Asn />} />
             <Route path='azure' element={<Azure />} />
             <Route path='geolocation' element={<Geolocation />} />
             <Route path='coderepo' element={<CodeRepo />} />
@@ -65,7 +66,7 @@ function App() {
             <Route path='social' element={<Social />} />
             <Route path='storage' element={<Storage />} />
             <Route path='WAF' element={<WAF />} />
-            <Route path='dashboard' element={<Dashboard />} />
+            {/* <Route path='dashboard' element={<Dashboard />} /> */}
           </Route>
         </Routes>
       </BrowserRouter>
