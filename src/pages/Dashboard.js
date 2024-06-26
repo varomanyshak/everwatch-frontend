@@ -20,7 +20,6 @@ for (const key in filterData) {
 }
 
 
-
 const ApexChart = () => {
   const linedata = {
     series: [
@@ -402,7 +401,7 @@ const Dashboard = (props) => {
   return (
     <>
       <Row>
-        {/* <ApexChart /> */}
+        <ApexChart />
       </Row>
       <Row style={{ height: '600px' }}>
         <Col ms={6}>

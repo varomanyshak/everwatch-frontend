@@ -14,7 +14,7 @@ import { inputTitle } from "../features/counter/titleSlice";
 const Sidebar = () => {
   const dispatch = useDispatch()
   const Reload = () => {
-    window.location.reload();
+    window.location.href = "/";
   }
 
   const changeRouter = (value, index) => {
@@ -33,11 +33,11 @@ const Sidebar = () => {
 
 
   return (
-    <CDBSidebar style={{}}>
+    <CDBSidebar>
       <CDBSidebarHeader prefix={<i className="fa fa-bars" />} className="logo" ><div onClick={() => Reload()} style={{ fontSize: '30px' }}>it tech</div></CDBSidebarHeader>
       <CDBSidebarContent style={{ 'flexGrow': '1' }}>
         <CDBSidebarMenu>
-          <Link className="categorybtn active-category" to="/" onClick={() => changeRouter('ASN Information', 0)}><CDBSidebarMenuItem icon="th-large">ASN Information</CDBSidebarMenuItem></Link>
+          <Link className="categorybtn" to="/asn" onClick={() => changeRouter('ASN Information', 0)}><CDBSidebarMenuItem icon="th-large">ASN Information</CDBSidebarMenuItem></Link>
           <Link className="categorybtn" to="/azure" onClick={() => changeRouter('Azure Tenant', 1)}><CDBSidebarMenuItem icon="th-large">Azure Tenant</CDBSidebarMenuItem></Link>
           <Link className="categorybtn" to="/geolocation" onClick={() => changeRouter('Geolocation', 2)}><CDBSidebarMenuItem icon="sticky-note">Geolocation</CDBSidebarMenuItem></Link>
           <Link className="categorybtn" to="/coderepo" onClick={() => changeRouter('Code Repository', 3)}><CDBSidebarMenuItem icon="credit-card">Code Repository</CDBSidebarMenuItem></Link>
